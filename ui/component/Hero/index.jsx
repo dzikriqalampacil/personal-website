@@ -25,7 +25,7 @@ function Hero() {
         <Box bg={'brand.blackless'} h='100vh'>
             <Navbar />
             <Flex border='1px' borderColor='yellow'>
-                <VStack border='1px' borderColor='blue' alignItems={'flex-start'} width='68%' bg='brand.black' pl={'10%'} pr='27%' pt='6%'>
+                <VStack border='1px' borderColor='blue' alignItems={'flex-start'} width='68%' bg='brand.black' pl={'10%'} pr='27%' pt='6%' zIndex={'2'}>
                     <Text color="brand.green" fontWeight={'800'} fontSize='33px'>
                         DZIKRI QALAM HATORANGAN
                     </Text>
@@ -50,7 +50,7 @@ function Hero() {
                         <Socmed image={'/assets/socmed/github.svg'} />
                     </HStack>
                 </VStack>
-                <Box position='relative' marginRight={'50px'}>
+                <Box position='relative' right={'20%'}>
                     <Image src='/assets/circle_hero.svg' width={'650px'} height='650px' />
                 </Box>
             </Flex>

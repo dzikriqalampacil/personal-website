@@ -12,7 +12,7 @@ function Item({ text, isActive, ...rest }) {
 
 function Navbar() {
     return (
-        <HStack spacing='5%' border='1px' borderColor='red' justifyContent={'center'} alignItems={'flex-end'} position='absolute' width={'100%'}>
+        <HStack spacing='5%' border='1px' borderColor='red' justifyContent={'center'} alignItems={'flex-end'} position='absolute' width={'100%'} zIndex={'3'}>
             <Item text='Home' isActive={true} />
             <Item text='About me' isActive={false} />
             <Item text='Projects' isActive={false} />
