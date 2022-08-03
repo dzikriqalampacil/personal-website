@@ -1,4 +1,3 @@
-// pages/_app.js
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from '../ui/theme'
 import '@fontsource/poppins'
