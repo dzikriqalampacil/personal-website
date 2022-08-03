@@ -22,7 +22,7 @@ function GreenButton() {
 
 function Hero() {
     return (
-        <Box bg={'brand.blackless'} h='100vh'>
+        <Box bg={'brand.blackless'} h='100vh' border='1px' borderColor='green' >
             <Navbar />
             <Flex border='1px' borderColor='yellow'>
                 <VStack border='1px' borderColor='blue' alignItems={'flex-start'} width='68%' bg='brand.black' pl={'10%'} pr='27%' pt='6%' zIndex={'2'}>
