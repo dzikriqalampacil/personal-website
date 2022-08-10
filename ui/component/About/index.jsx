@@ -7,7 +7,7 @@ function About() {
             <Text fontWeight={700} color={'#272727'} fontSize={'150px'} position={'absolute'} right='-130' top='0'>
                 ABOUT
             </Text>
-            <Image src={'/assets/balls.svg'} position={'absolute'} left='0' bottom='0' />
+            <Image src={'/assets/balls.svg'} position={'absolute'} left='0' bottom='5' />
             <Heading fontWeight={700} color={'white'} fontSize={'37.5px'}>
                 ABOUT ME
             </Heading>
