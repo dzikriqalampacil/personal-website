@@ -3,7 +3,7 @@ import { Flex, Text } from '@chakra-ui/react'
 
 function Footer() {
     return (
-        <Flex justify={'center'} align='center' py='36px' bg='#202020'>
+        <Flex justify={'center'} align='center' py='28px' bg='#202020'>
             <Text color='#8F8F8F'>
                 © 2022 Dzikri Qalam. All rights reserved.
             </Text>

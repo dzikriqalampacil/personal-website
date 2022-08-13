@@ -22,10 +22,10 @@ function GreenButton() {
 
 function Hero() {
     return (
-        <Box bg={'brand.blackless'} h='100vh' border='1px' borderColor='green' >
+        <Box bg={'brand.blackless'} minH='100vh' border='1px solid green' >
             <Navbar />
-            <Flex border='1px' borderColor='yellow'>
-                <VStack border='1px' borderColor='blue' alignItems={'flex-start'} width='68%' bg='brand.black' pl={'10%'} pr='27%' pt='6%' zIndex={'2'}>
+            <Flex border='1px solid yellow' minH='100vh'>
+                <VStack border='1px' borderColor='blue' alignItems={'flex-start'} justify='center' width='68%' bg='brand.black' pl={'10%'} pr='27%' zIndex={'2'}>
                     <Text color="brand.green" fontWeight={'800'} fontSize='33px'>
                         DZIKRI QALAM HATORANGAN
                     </Text>
@@ -33,7 +33,7 @@ function Hero() {
                     <Text color='brand.white' fontWeight={'700'} fontSize='37.5px' >
                         Full-Stack Engineer
                     </Text>
-                    <Text color='#8F8F8F' fontWeight={'500'} fontSize='15px'>
+                    <Text color='#8F8F8F' fontWeight={'500'} fontSize='15px' py='10px'>
                         I'm a Full-stack engineer focused on creating Web and Mobile applications. I really like different projects that solve real problems.
                     </Text>
                     <HStack spacing='66px' >
@@ -43,7 +43,7 @@ function Hero() {
                         </HStack>
                         <GreenButton />
                     </HStack>
-                    <HStack spacing='23px'>
+                    <HStack spacing='23px' pt='50px'>
                         <Socmed image={'/assets/socmed/github.svg'} />
                         <Socmed image={'/assets/socmed/linkedIn.svg'} />
                         <Socmed image={'/assets/socmed/github.svg'} />
