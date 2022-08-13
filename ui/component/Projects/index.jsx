@@ -6,17 +6,17 @@ function Project() {
         <VStack bg='#272727' borderRadius={'18px'} spacing='0' boxShadow='0px 4px 40px rgba(0, 0, 0, 0.16)' border='2px solid red' zIndex='2'>
             <Image src='/assets/dummy_card.png' />
             <VStack p='25px' align='flex-start' justifyContent={'flex-start'} border='2px solid green' w='full' borderRadius={'18px'}>
-                <Text fontWeight={700} fontSize='14px' color='white'>
+                <Text fontWeight={700} fontSize='18px' color='white'>
                     Portfolio Website
                 </Text>
                 <HStack>
                     <Image src={'/assets/socmed/github.svg'} />
-                    <Text fontWeight={600} fontSize='10px' color='#E2E2E2'>
+                    <Text fontWeight={600} fontSize='14px' color='#E2E2E2'>
                         UI Design
                     </Text>
                 </HStack>
                 <HStack border='2px solid red' w='full' justifyContent={'space-between'}>
-                    <Text fontWeight={600} fontSize='10px' color='white'>
+                    <Text fontWeight={600} fontSize='14px' color='white'>
                         View Code &rarr;
                     </Text>
                     <Button bg='#13FF00'>See Project</Button>
