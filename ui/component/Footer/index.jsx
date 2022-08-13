@@ -5,7 +5,7 @@ function Footer() {
     return (
         <Flex justify={'center'} align='center' py='28px' bg='#202020'>
             <Text color='#8F8F8F'>
-                © 2022 Dzikri Qalam. All rights reserved.
+                © 2022 Dzikri Qalam Hatorangan. All rights reserved.
             </Text>
         </Flex>
     )
