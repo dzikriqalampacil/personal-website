@@ -20,12 +20,18 @@ function GreenButton() {
     )
 }
 
+function RightTriangle() {
+    return (
+        <Box alignSelf='flex-end' w='0' h='0' zIndex={'2'} borderRight='450px solid transparent' borderBottom={'100vh solid #202020'} />
+    )
+}
+
 function Hero() {
     return (
         <Box bg={'brand.blackless'} minH='100vh'  >
             <Navbar />
             <Flex minH='100vh'>
-                <VStack alignItems={'flex-start'} justify='center' width='68%' bg='brand.black' pl={'10%'} pr='27%' zIndex={'2'}>
+                <VStack alignItems={'flex-start'} justify='center' width='46%' bg='brand.black' pl={'10%'} pr='2%' zIndex={'2'} border='2px solid white'>
                     <Text color="brand.green" fontWeight={'800'} fontSize='33px'>
                         DZIKRI QALAM HATORANGAN
                     </Text>
@@ -50,7 +56,8 @@ function Hero() {
                         <Socmed image={'/assets/socmed/github.svg'} />
                     </HStack>
                 </VStack>
-                <Box position='relative' right={'20%'}>
+                <RightTriangle />
+                <Box position='relative' right={'20%'} alignSelf='flex-end'>
                     <Image src='/assets/circle_hero.svg' width={'650px'} height='650px' />
                 </Box>
             </Flex>
