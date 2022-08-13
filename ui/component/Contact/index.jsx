@@ -1,5 +1,12 @@
 import React from 'react'
-import { Flex, HStack, VStack, Text, Box, Image, Divider } from '@chakra-ui/react'
+import {
+    Flex, HStack, VStack, Text, Box, Image, FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+    Input,
+    Textarea
+} from '@chakra-ui/react'
 
 function ItemContact({ image, text }) {
     return (
@@ -9,6 +16,15 @@ function ItemContact({ image, text }) {
                 {text}
             </Text>
         </HStack>
+    )
+}
+
+function ItemForm({ }) {
+    return (
+        <VStack align='flex-start'>
+            <FormLabel color='#C1C1C1'>Your name</FormLabel>
+            <Input type='email' />
+        </VStack>
     )
 }
 
@@ -33,9 +49,32 @@ function Contact() {
                     <br />
                     <Box bg='white' height={'3px'} width='40%' alignSelf='flex-start' />
                 </VStack>
-                <VStack w='60%'>
-
-                </VStack>
+                <FormControl w='60%' p='50px'>
+                    <VStack align='flex-start' w='full' border='2px solid green' spacing='30px' >
+                        <HStack justify={'space-between'} w='full'>
+                            <VStack align='flex-start' spacing={'0'}>
+                                <FormLabel color='#C1C1C1'>Your name</FormLabel>
+                                <Input type='email' color='#C1C1C1' />
+                            </VStack>
+                            <VStack align='flex-start' spacing={'0'} >
+                                <FormLabel color='#C1C1C1'>Your email</FormLabel>
+                                <Input type='email' color='#C1C1C1' />
+                            </VStack>
+                        </HStack>
+                        <VStack align='flex-start' spacing={'0'} w='full'>
+                            <FormLabel color='#C1C1C1'>Subject</FormLabel>
+                            <Input type='email' color='#C1C1C1' />
+                        </VStack>
+                        <VStack align='flex-start' spacing={'0'} w='full'>
+                            <FormLabel color='#C1C1C1'>Message</FormLabel>
+                            <Textarea color='#C1C1C1' />
+                        </VStack>
+                        <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} alignSelf='flex-end'>
+                            <Image src='/assets/circle_down.svg' alt='next' width='26.25px' height='26.25px' />
+                            <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Send</Text>
+                        </HStack>
+                    </VStack>
+                </FormControl>
             </HStack>
         </Flex>
     )
