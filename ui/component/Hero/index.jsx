@@ -22,10 +22,10 @@ function GreenButton() {
 
 function Hero() {
     return (
-        <Box bg={'brand.blackless'} minH='100vh' border='1px solid green' >
+        <Box bg={'brand.blackless'} minH='100vh'  >
             <Navbar />
-            <Flex border='1px solid yellow' minH='100vh'>
-                <VStack border='1px' borderColor='blue' alignItems={'flex-start'} justify='center' width='68%' bg='brand.black' pl={'10%'} pr='27%' zIndex={'2'}>
+            <Flex minH='100vh'>
+                <VStack alignItems={'flex-start'} justify='center' width='68%' bg='brand.black' pl={'10%'} pr='27%' zIndex={'2'}>
                     <Text color="brand.green" fontWeight={'800'} fontSize='33px'>
                         DZIKRI QALAM HATORANGAN
                     </Text>
