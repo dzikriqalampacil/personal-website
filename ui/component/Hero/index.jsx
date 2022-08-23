@@ -58,7 +58,7 @@ function Hero() {
                 </VStack>
                 <RightTriangle />
                 <Box position='absolute' right={'20%'} alignSelf='flex-end'>
-                    <Image src='/assets/circle_hero.svg' width='650px' height='650px' />
+                    <Image src='/assets/circle_hero.svg' width='650' height='650' />
                 </Box>
             </Flex>
         </Box>
