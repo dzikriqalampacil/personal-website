@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Text, VStack, HStack, Flex } from '@chakra-ui/react'
 import Navbar from '../Navbar'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 function Socmed({ image }) {
     return (
@@ -29,7 +30,13 @@ function RightTriangle() {
 function GreenCircle() {
     return (
         <Box position={'absolute'} right={{ base: '6%', md: '0%', lg: '6%', xl: '20%' }} top={{ base: '15%', md: '15%', lg: '15%', xl: '15%' }}>
-            <Image src='/assets/circle_hero.svg' width='650' height='650' />
+            <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+            >
+                <Image src='/assets/circle_hero.svg' width='650' height='650' />
+            </motion.div>
         </Box>
     )
 }
@@ -39,7 +46,7 @@ function Hero() {
         <Box bg={'brand.blackless'} minH='100vh'  >
             <Navbar />
             <Flex minH='100vh' position={'relative'}>
-                <VStack alignItems={'flex-start'} justify='center' width={{ base: '100%', md: '75%', lg: '60%', xl: '46%' }} bg='brand.black' pl={{ base: '4%', lg: '10%' }} pr={{ base: '5%', lg: '2%' }} zIndex={'2'} border='2px solid white'>
+                <VStack alignItems={'flex-start'} justify='center' width={{ base: '100%', md: '75%', lg: '60%', xl: '46%' }} bg='brand.black' pl={{ base: '4%', lg: '10%' }} pr={{ base: '5%', lg: '2%' }} zIndex={'2'}>
                     <Text color="brand.green" fontWeight={'800'} fontSize={{ base: '21px', lg: '33px' }}>
                         DZIKRI QALAM HATORANGAN
                     </Text>
