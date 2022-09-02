@@ -29,7 +29,7 @@ function RightTriangle() {
 
 function GreenCircle() {
     return (
-        <Box position={'absolute'} right={{ base: '6%', md: '2%', lg: '6%', xl: '20%' }} top={{ base: '15%', md: '15%', lg: '15%', xl: '15%' }}>
+        <Box position={'absolute'} right={{ base: '6%', md: '3%', lg: '6%', xl: '20%' }} top={{ base: '15%', md: '15%', lg: '15%', xl: '15%' }}>
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
