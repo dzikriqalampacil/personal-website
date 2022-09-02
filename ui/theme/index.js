@@ -13,6 +13,18 @@ const theme = extendTheme({
     fonts: {
         heading: `Poppins, ${base.fonts?.heading}`,
         body: `Poppins, ${base.fonts?.body}`,
+    },
+    components: {
+        Input: {
+            defaultProps: {
+                focusBorderColor: '#13FF00',
+            }
+        },
+        Textarea: {
+            defaultProps: {
+                focusBorderColor: '#13FF00',
+            }
+        }
     }
 });
 

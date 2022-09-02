@@ -2,15 +2,13 @@ import React from 'react'
 import {
     Flex, HStack, VStack, Text, Box, Image, FormControl,
     FormLabel,
-    FormErrorMessage,
-    FormHelperText,
     Input,
     Textarea
 } from '@chakra-ui/react'
 
 function ItemContact({ image, text }) {
     return (
-        <HStack pl='110px'>
+        <HStack pl={{ base: '5%', lg: '22%' }}>
             <Image src={image} />
             <Text color='white'>
                 {text}
@@ -19,59 +17,43 @@ function ItemContact({ image, text }) {
     )
 }
 
-function ItemForm({ }) {
+function ItemForm({ label, type }) {
     return (
-        <VStack align='flex-start'>
-            <FormLabel color='#C1C1C1'>Your name</FormLabel>
-            <Input type='email' />
+        <VStack align='flex-start' spacing={'0'} w='full'>
+            <FormLabel color='#C1C1C1'>{label}</FormLabel>
+            <Input type={type} bg='#343434' border='none' borderRadius={'8px'} color='#C1C1C1' />
         </VStack>
     )
 }
 
 function Contact() {
     return (
-        <Flex justify={'center'} align='center' minH='100vh' bg='#161616'>
-            <HStack border={'2px solid red'} w='80%' borderRadius={'33px'}>
-                <VStack borderRadius={'33px 0px 0px 33px'} bg='#272727' py='100px' w='40%' alignItems={'flex-start'}>
-                    <HStack pl='110px' w='full'>
+        <Flex justify={'center'} align='center' minH='100vh' bg='#161616' py={{ base: '10%', md: '0' }}>
+            <Flex border={'2px solid red'} w='80%' borderRadius={'33px'} spacing={0} flexDirection={{ base: 'column', md: 'row' }}>
+                <VStack borderRadius={{ base: '33px 33px 0px 0px', md: '33px 0px 0px 33px' }} bg='#272727' w={{ base: 'full', md: '40%' }} alignItems={'flex-start'} justifyContent='center' p={{ base: '5%', md: '0' }}>
+                    <HStack pl={{ base: '5%', lg: '22%' }} mb={{ base: '10px', md: '40px' }} w='full'>
                         <Text color='white' fontWeight={600} fontSize='26px'>
                             CONTACT
                         </Text>
                         <Box bg='white' height={'3px'} width='100%' />
                     </HStack>
-                    <br />
-                    <br />
-                    <br />
-                    <VStack spacing={'25px'} align='flex-start'>
+                    <VStack spacing={'25px'} align='flex-start' pb={{ base: '40px', md: '90px' }} w='full' border='2px solid blue'>
                         <ItemContact image={'/assets/socmed/github.svg'} text={'087855474426'} />
                         <ItemContact image={'/assets/socmed/github.svg'} text={'dzikri.qalam01@ui.ac.id'} />
                         <ItemContact image={'/assets/socmed/github.svg'} text={'Depok, Jawa Barat, Indonesia'} />
                     </VStack>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
                     <Box bg='white' height={'3px'} width='40%' alignSelf='flex-start' />
                 </VStack>
-                <FormControl w='60%' p='50px'>
+                <FormControl w={{ base: 'full', md: '60%' }} p={{ base: '5%', md: '50' }} bg='#202020' borderRadius={{ base: '0px 0px 33px 33px', md: '0px 33px 33px 0px' }} >
                     <VStack align='flex-start' w='full' border='2px solid green' spacing='30px' >
-                        <HStack justify={'space-between'} w='full'>
-                            <VStack align='flex-start' spacing={'0'}>
-                                <FormLabel color='#C1C1C1'>Your name</FormLabel>
-                                <Input type='email' color='#C1C1C1' />
-                            </VStack>
-                            <VStack align='flex-start' spacing={'0'} >
-                                <FormLabel color='#C1C1C1'>Your email</FormLabel>
-                                <Input type='email' color='#C1C1C1' />
-                            </VStack>
+                        <HStack justify={'space-between'} spacing='5%' w='full'>
+                            <ItemForm label="Your name" />
+                            <ItemForm label="Your Email" />
                         </HStack>
-                        <VStack align='flex-start' spacing={'0'} w='full'>
-                            <FormLabel color='#C1C1C1'>Subject</FormLabel>
-                            <Input type='email' color='#C1C1C1' />
-                        </VStack>
+                        <ItemForm label="Subject" />
                         <VStack align='flex-start' spacing={'0'} w='full'>
                             <FormLabel color='#C1C1C1'>Message</FormLabel>
-                            <Textarea color='#C1C1C1' />
+                            <Textarea color='#C1C1C1' bg='#343434' border='none' borderRadius={'8px'} />
                         </VStack>
                         <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} alignSelf='flex-end'>
                             <Image src='/assets/circle_down.svg' alt='next' width='26.25px' height='26.25px' />
@@ -79,7 +61,7 @@ function Contact() {
                         </HStack>
                     </VStack>
                 </FormControl>
-            </HStack>
+            </Flex>
         </Flex>
     )
 }
