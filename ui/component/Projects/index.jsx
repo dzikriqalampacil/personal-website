@@ -7,9 +7,9 @@ import { Pagination } from "swiper";
 
 function Project() {
     return (
-        <VStack bg='#272727' borderRadius={'18px'} spacing='0' boxShadow='0px 4px 40px rgba(0, 0, 0, 0.16)' border='2px solid red' zIndex='2' w={{ base: '300px', md: '412px' }}>
+        <VStack bg='#272727' borderRadius={'18px'} spacing='0' boxShadow='0px 4px 40px rgba(0, 0, 0, 0.16)' zIndex='2' w={{ base: '300px', md: '412px' }}>
             <Image src='/assets/dummy_card.png' />
-            <VStack p='25px' align='flex-start' justifyContent={'flex-start'} border='2px solid green' w='full' borderRadius={'18px'}>
+            <VStack p='25px' align='flex-start' justifyContent={'flex-start'} w='full' borderRadius={'18px'}>
                 <Text fontWeight={700} fontSize='18px' color='white'>
                     Portfolio Website
                 </Text>
@@ -19,7 +19,7 @@ function Project() {
                         UI Design
                     </Text>
                 </HStack>
-                <HStack border='2px solid red' w='full' justifyContent={'space-between'}>
+                <HStack w='full' justifyContent={'space-between'}>
                     <Text fontWeight={600} fontSize='14px' color='white'>
                         View Code &rarr;
                     </Text>

@@ -29,7 +29,7 @@ function ItemForm({ label, type }) {
 function Contact() {
     return (
         <Flex justify={'center'} align='center' minH='100vh' bg='#161616' py={{ base: '10%', md: '0' }}>
-            <Flex border={'2px solid red'} w='80%' borderRadius={'33px'} spacing={0} flexDirection={{ base: 'column', md: 'row' }}>
+            <Flex w='80%' borderRadius={'33px'} spacing={0} flexDirection={{ base: 'column', md: 'row' }}>
                 <VStack borderRadius={{ base: '33px 33px 0px 0px', md: '33px 0px 0px 33px' }} bg='#272727' w={{ base: 'full', md: '40%' }} alignItems={'flex-start'} justifyContent='center' p={{ base: '5%', md: '0' }}>
                     <HStack pl={{ base: '5%', lg: '22%' }} mb={{ base: '10px', md: '40px' }} w='full'>
                         <Text color='white' fontWeight={600} fontSize='26px'>
@@ -37,7 +37,7 @@ function Contact() {
                         </Text>
                         <Box bg='white' height={'3px'} width='100%' />
                     </HStack>
-                    <VStack spacing={'25px'} align='flex-start' pb={{ base: '40px', md: '90px' }} w='full' border='2px solid blue'>
+                    <VStack spacing={'25px'} align='flex-start' pb={{ base: '40px', md: '90px' }} w='full'>
                         <ItemContact image={'/assets/socmed/github.svg'} text={'087855474426'} />
                         <ItemContact image={'/assets/socmed/github.svg'} text={'dzikri.qalam01@ui.ac.id'} />
                         <ItemContact image={'/assets/socmed/github.svg'} text={'Depok, Jawa Barat, Indonesia'} />
@@ -45,7 +45,7 @@ function Contact() {
                     <Box bg='white' height={'3px'} width='40%' alignSelf='flex-start' />
                 </VStack>
                 <FormControl w={{ base: 'full', md: '60%' }} p={{ base: '5%', md: '50' }} bg='#202020' borderRadius={{ base: '0px 0px 33px 33px', md: '0px 33px 33px 0px' }} >
-                    <VStack align='flex-start' w='full' border='2px solid green' spacing='30px' >
+                    <VStack align='flex-start' w='full' spacing='30px' >
                         <HStack justify={'space-between'} spacing='5%' w='full'>
                             <ItemForm label="Your name" />
                             <ItemForm label="Your Email" />

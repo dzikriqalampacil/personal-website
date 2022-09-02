@@ -24,8 +24,8 @@ function Experiences() {
                 UT ME
             </Text>
             <Image src={'/assets/exballs.svg'} position={'absolute'} right='5' top='5' boxSize={{ base: '42px', md: '100px', lg: '170px' }} />
-            <SimpleGrid columns={2} pt='70px' spacingX={'17%'} w={{ base: '90%', md: '60%' }} border='2px solid red' alignSelf={'center'}>
-                <VStack alignItems={'flex-start'} border='2px solid white' spacing={'51px'}>
+            <SimpleGrid columns={2} pt='70px' spacingX={'17%'} w={{ base: '90%', md: '60%' }} alignSelf={'center'}>
+                <VStack alignItems={'flex-start'} spacing={'51px'}>
                     <Heading fontWeight={700} color={'white'} fontSize={{ base: '21px', lg: '33px' }}>Education</Heading>
                     <Item date={'January 2020 - December 2023'} title={'Computer Science'} institution={'Universitas Indonesia'} />
                     <Item date={'January 2020 - December 2023'} title={'Computer Science'} institution={'Universitas Indonesia'} />
@@ -34,7 +34,7 @@ function Experiences() {
                     <Item date={'January 2020 - December 2023'} title={'Computer Science'} institution={'Universitas Indonesia'} />
                     <Item date={'January 2020 - December 2023'} title={'Computer Science'} institution={'Universitas Indonesia'} />
                 </VStack>
-                <VStack alignItems={'flex-start'} border='2px solid white' spacing={'51px'}>
+                <VStack alignItems={'flex-start'} spacing={'51px'}>
                     <Heading fontWeight={700} color={'white'} fontSize={{ base: '21px', lg: '33px' }}>Experience</Heading>
                     <Item date={'January 2020 - December 2023'} title={'Computer Science'} institution={'Universitas Indonesia'} />
                     <Item date={'January 2020 - December 2023'} title={'Computer Science'} institution={'Universitas Indonesia'} />
