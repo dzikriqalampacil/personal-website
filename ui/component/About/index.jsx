@@ -3,7 +3,7 @@ import React from 'react'
 
 function About() {
     return (
-        <VStack bg={'#161616'} minH='100vh' justifyContent={'center'} position={'relative'} overflow='hidden'>
+        <VStack bg={'#161616'} minH='100vh' justifyContent={'center'} position={'relative'} overflow='hidden' id='about'>
             <Text fontWeight={700} color={'#272727'} fontSize={{ base: '42px', md: '100px', lg: '150px' }} position={'absolute'} right={{ base: '-10', md: '-70', lg: '-130' }} top='0'>
                 ABOUT
             </Text>

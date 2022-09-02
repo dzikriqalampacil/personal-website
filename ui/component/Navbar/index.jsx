@@ -1,4 +1,4 @@
-import { HStack, Flex, Text, Box } from '@chakra-ui/react'
+import { HStack, Flex, Text, Link } from '@chakra-ui/react'
 import React from 'react'
 
 function Item({ text, isActive, ...rest }) {
@@ -12,11 +12,19 @@ function Item({ text, isActive, ...rest }) {
 
 function Navbar() {
     return (
-        <HStack spacing='5%' justifyContent={'center'} position='absolute' width={'100%'} zIndex={'3'} pt={4}>
-            <Item text='Home' />
-            <Item text='About me' />
-            <Item text='Projects' />
-            <Item text='Contact' />
+        <HStack spacing='5%' justifyContent={'center'} position='absolute' width={'100%'} zIndex={'3'} pt={5}>
+            <Link href='#home'>
+                <Item text='Home' />
+            </Link>
+            <Link href='#about'>
+                <Item text='About me' />
+            </Link>
+            <Link href='#projects'>
+                <Item text='Projects' />
+            </Link>
+            <Link href='#contact'>
+                <Item text='Contact' />
+            </Link>
         </HStack>
     )
 }

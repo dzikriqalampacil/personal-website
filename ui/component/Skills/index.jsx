@@ -14,7 +14,7 @@ function Item({ image, text }) {
 
 function Skills() {
     return (
-        <VStack bg={'#202020'} minH='100vh' pt='84px' pb='50px' position={'relative'} overflow='hidden' align={'center'}>
+        <VStack bg={'#202020'} minH='100vh' pt='84px' pb='50px' position={'relative'} overflow='hidden' align={'center'} id='skills'>
             < Heading fontWeight={700} color={'white'} fontSize={'32px'} mb='50px' >
                 My Skills
             </Heading >

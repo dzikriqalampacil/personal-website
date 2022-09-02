@@ -40,7 +40,7 @@ function Projects() {
     }
 
     return (<>
-        <Box bg={'#202020'} minH='100vh' position={'relative'} overflow='hidden'>
+        <Box bg={'#202020'} minH='100vh' position={'relative'} overflow='hidden' id='projects'>
             <Box boxSize={{ base: '500px', sm: '600px', lg: '800px' }} borderRadius={'50%'} bg='#252525' position={'absolute'} right={'-400'} top={'-400'} />
             <Box boxSize={{ base: '500px', sm: '600px', lg: '800px' }} borderRadius={'50%'} bg='#252525' position={'absolute'} left={'-400'} bottom={'-400'} />
             <VStack pb='26px' mt='40px'>

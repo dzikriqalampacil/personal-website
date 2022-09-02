@@ -28,7 +28,7 @@ function ItemForm({ label, type }) {
 
 function Contact() {
     return (
-        <Flex justify={'center'} align='center' minH='100vh' bg='#161616' py={{ base: '10%', md: '0' }}>
+        <Flex justify={'center'} align='center' minH='100vh' bg='#161616' py={{ base: '10%', md: '0' }} id='contact'>
             <Flex w='80%' borderRadius={'33px'} spacing={0} flexDirection={{ base: 'column', md: 'row' }}>
                 <VStack borderRadius={{ base: '33px 33px 0px 0px', md: '33px 0px 0px 33px' }} bg='#272727' w={{ base: 'full', md: '40%' }} alignItems={'flex-start'} justifyContent='center' p={{ base: '5%', md: '0' }}>
                     <HStack pl={{ base: '5%', lg: '22%' }} mb={{ base: '10px', md: '40px' }} w='full'>

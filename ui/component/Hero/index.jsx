@@ -49,7 +49,7 @@ function GreenCircle() {
 
 function Hero() {
     return (
-        <Box bg={'brand.blackless'} minH='100vh'  >
+        <Box bg={'brand.blackless'} minH='100vh' id='home'>
             <Navbar />
             <Flex minH='100vh' position={'relative'}>
                 <VStack alignItems={'flex-start'} justify='center' width={{ base: '100%', md: '75%', lg: '60%', xl: '46%' }} bg='brand.black' pl={{ base: '4%', lg: '10%' }} pr={{ base: '5%', lg: '2%' }} zIndex={'2'}>

@@ -19,7 +19,7 @@ function Item({ date, title, institution }) {
 
 function Experiences() {
     return (
-        <VStack bg={'#161616'} minH='100vh' position={'relative'} overflow='hidden' pb={{ base: '90px', sm: '120px', md: '280px' }}>
+        <VStack bg={'#161616'} minH='100vh' position={'relative'} overflow='hidden' pb={{ base: '90px', sm: '120px', md: '280px' }} id='experience'>
             <Text fontWeight={700} color={'#272727'} fontSize={{ base: '42px', md: '100px', lg: '150px' }} position={'absolute'} left={{ base: '-4', md: '-10', lg: '-65' }} bottom='5'>
                 UT ME
             </Text>
