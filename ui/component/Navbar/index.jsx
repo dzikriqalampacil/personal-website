@@ -19,9 +19,6 @@ function Navbar() {
             <Link href='#about' >
                 <Item text='About me' />
             </Link>
-            <Link href='#projects'>
-                <Item text='Projects' />
-            </Link>
             <Link href='#contact'>
                 <Item text='Contact' />
             </Link>

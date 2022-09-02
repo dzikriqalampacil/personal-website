@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text, VStack, HStack, Flex } from '@chakra-ui/react'
+import { Box, Text, VStack, HStack, Flex, Link } from '@chakra-ui/react'
 import Navbar from '../Navbar'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -14,10 +14,12 @@ function Socmed({ image }) {
 
 function GreenButton() {
     return (
-        <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'}>
-            <Image src='/assets/circle_down.svg' alt='next' width='26.25px' height='26.25px' />
-            <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Portfolio</Text>
-        </HStack>
+        <Link href='#projects' style={{ textDecoration: 'none' }}>
+            <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'}>
+                <Image src='/assets/circle_down.svg' alt='next' width='26.25px' height='26.25px' />
+                <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Portfolio</Text>
+            </HStack>
+        </Link>
     )
 }
 
@@ -63,7 +65,7 @@ function Hero() {
                     <Text color='#8F8F8F' fontWeight={'500'} fontSize='16px' py='10px'>
                         I'm a Full-stack engineer focused on creating Web and Mobile applications. I really like different projects that solve real problems.
                     </Text>
-                    <HStack spacing='66px' >
+                    <HStack spacing='66px' pt='10px'>
                         {/* <HStack bg='brand.black' cursor={'pointer'} padding={'8px 0'}>
                             <Image src='/assets/cloud_down.svg' alt='next' width='26.25px' height='26.25px' />
                             <Text color='brand.white' fontWeight={'600'} fontSize='15px'>Download CV</Text>
