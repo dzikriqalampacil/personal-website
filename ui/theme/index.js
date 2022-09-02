@@ -25,7 +25,14 @@ const theme = extendTheme({
                 focusBorderColor: '#13FF00',
             }
         }
-    }
+    },
+    styles: {
+        global: {
+            html: {
+                scrollBehavior: 'smooth'
+            }
+        },
+    },
 });
 
 export default theme
