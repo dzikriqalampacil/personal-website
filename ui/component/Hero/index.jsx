@@ -29,14 +29,20 @@ function RightTriangle() {
 
 function GreenCircle() {
     return (
-        <Box position={'absolute'} right={{ base: '6%', md: '0%', lg: '6%', xl: '20%' }} top={{ base: '15%', md: '15%', lg: '15%', xl: '15%' }}>
+        <Box position={'absolute'} right={{ base: '6%', md: '2%', lg: '6%', xl: '20%' }} top={{ base: '15%', md: '15%', lg: '15%', xl: '15%' }}>
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
+                style={{
+                    width: 650,
+                    height: 650,
+                    borderRadius: '50%',
+                    border: '5px solid #13FF00',
+                    boxShadow: '0px 0px 20px #13FF00'
+                }}
+
                 transition={{ duration: 0.5 }}
-            >
-                <Image src='/assets/circle_hero.svg' width='650' height='650' />
-            </motion.div>
+            />
         </Box>
     )
 }
