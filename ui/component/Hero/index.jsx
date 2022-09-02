@@ -22,7 +22,15 @@ function GreenButton() {
 
 function RightTriangle() {
     return (
-        <Box alignSelf='flex-end' w='0' h='0' zIndex={'2'} borderRight='450px solid transparent' borderBottom={'100vh solid #202020'} />
+        <Box alignSelf='flex-end' w='0' h='0' zIndex={'2'} borderRight='35vw solid transparent' borderBottom={'100vh solid #202020'} display={{ base: 'none', md: 'block' }} />
+    )
+}
+
+function GreenCircle() {
+    return (
+        <Box position={'absolute'} right='20%' top='15%'>
+            <Image src='/assets/circle_hero.svg' width='650' height='650' />
+        </Box>
     )
 }
 
@@ -30,23 +38,23 @@ function Hero() {
     return (
         <Box bg={'brand.blackless'} minH='100vh'  >
             <Navbar />
-            <Flex minH='100vh'>
-                <VStack alignItems={'flex-start'} justify='center' width='46%' bg='brand.black' pl={'10%'} pr='2%' zIndex={'2'} border='2px solid white'>
-                    <Text color="brand.green" fontWeight={'800'} fontSize='33px'>
+            <Flex minH='100vh' position={'relative'}>
+                <VStack alignItems={'flex-start'} justify='center' width={{ base: '100%', md: '75%', lg: '60%', xl: '46%' }} bg='brand.black' pl={{ base: '4%', lg: '10%' }} pr={{ base: '5%', lg: '2%' }} zIndex={'2'} border='2px solid white'>
+                    <Text color="brand.green" fontWeight={'800'} fontSize={{ base: '21px', lg: '33px' }}>
                         DZIKRI QALAM HATORANGAN
                     </Text>
                     <Box bg='brand.green' height={'3px'} width='80%' alignSelf={'flex-end'} />
-                    <Text color='brand.white' fontWeight={'700'} fontSize='37.5px' >
+                    <Text color='brand.white' fontWeight={'700'} fontSize={{ base: '23px', lg: '37.5px' }} >
                         Full-Stack Engineer
                     </Text>
-                    <Text color='#8F8F8F' fontWeight={'500'} fontSize='15px' py='10px'>
+                    <Text color='#8F8F8F' fontWeight={'500'} fontSize='16px' py='10px'>
                         I'm a Full-stack engineer focused on creating Web and Mobile applications. I really like different projects that solve real problems.
                     </Text>
                     <HStack spacing='66px' >
-                        <HStack bg='brand.black' cursor={'pointer'} padding={'8px 0'}>
+                        {/* <HStack bg='brand.black' cursor={'pointer'} padding={'8px 0'}>
                             <Image src='/assets/cloud_down.svg' alt='next' width='26.25px' height='26.25px' />
                             <Text color='brand.white' fontWeight={'600'} fontSize='15px'>Download CV</Text>
-                        </HStack>
+                        </HStack> */}
                         <GreenButton />
                     </HStack>
                     <HStack spacing='23px' pt='50px'>
@@ -57,9 +65,7 @@ function Hero() {
                     </HStack>
                 </VStack>
                 <RightTriangle />
-                <Box position='absolute' right={'20%'} alignSelf='flex-end'>
-                    <Image src='/assets/circle_hero.svg' width='650' height='650' />
-                </Box>
+                <GreenCircle />
             </Flex>
         </Box>
     )
