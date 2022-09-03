@@ -13,7 +13,7 @@ function Item({ text, isActive, ...rest }) {
 function Navbar() {
     return (
         <HStack spacing='5%' justifyContent={'center'} position='absolute' width={'100%'} zIndex={'3'} pt={5}>
-            <Link href='#home' >
+            <Link href='' >
                 <Item text='Home' />
             </Link>
             <Link href='#about' >

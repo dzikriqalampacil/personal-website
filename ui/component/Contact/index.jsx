@@ -5,11 +5,12 @@ import {
     Input,
     Textarea
 } from '@chakra-ui/react'
+import { Icon } from '@iconify/react'
 
 function ItemContact({ image, text }) {
     return (
         <HStack pl={{ base: '5%', lg: '22%' }}>
-            <Image src={image} />
+            <Icon icon={image} color='white' width={'26.25px'} height='26.25px' />
             <Text color='white'>
                 {text}
             </Text>
@@ -38,9 +39,9 @@ function Contact() {
                         <Box bg='white' height={'3px'} width='100%' />
                     </HStack>
                     <VStack spacing={'25px'} align='flex-start' pb={{ base: '40px', md: '90px' }} w='full'>
-                        <ItemContact image={'/assets/socmed/github.svg'} text={'087855474426'} />
-                        <ItemContact image={'/assets/socmed/github.svg'} text={'dzikri.qalam01@ui.ac.id'} />
-                        <ItemContact image={'/assets/socmed/github.svg'} text={'Depok, Jawa Barat, Indonesia'} />
+                        <ItemContact image={'fluent:call-12-regular'} text={'087855474426'} />
+                        <ItemContact image={'carbon:email'} text={'dzikri.qalam01@ui.ac.id'} />
+                        <ItemContact image={'akar-icons:location'} text={'Depok, Jawa Barat, Indonesia'} />
                     </VStack>
                     <Box bg='white' height={'3px'} width='40%' alignSelf='flex-start' />
                 </VStack>
@@ -56,7 +57,7 @@ function Contact() {
                             <Textarea color='#C1C1C1' bg='#343434' border='none' borderRadius={'8px'} />
                         </VStack>
                         <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} alignSelf='flex-end'>
-                            <Image src='/assets/circle_down.svg' alt='next' width='26.25px' height='26.25px' />
+                            <Icon icon={'bx:mail-send'} color='black' width={'26.25px'} height='26.25px' />
                             <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Send</Text>
                         </HStack>
                     </VStack>

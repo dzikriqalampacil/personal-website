@@ -1,4 +1,5 @@
 import { Box, Text, VStack, Heading, Image } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 import React from 'react'
 
 function About() {

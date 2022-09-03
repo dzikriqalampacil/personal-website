@@ -20,6 +20,7 @@
     "swiper": "^8.3.2"
   },
   "devDependencies": {
+    "@iconify/react": "^3.2.2",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.3"
   }

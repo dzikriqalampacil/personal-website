@@ -3,11 +3,12 @@ import { Box, Text, VStack, HStack, Flex, Link } from '@chakra-ui/react'
 import Navbar from '../Navbar'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { Icon } from '@iconify/react'
 
 function Socmed({ image }) {
     return (
         <VStack bg={'#353535'} w='45.75px' h='45.75px' borderRadius={'50%'} alignItems='center' justifyContent={'center'} cursor='pointer'>
-            <Image src={image} width='26.25px' height='26.25px' />
+            <Icon icon={image} width='26.25px' height='26.25px' color='white' />
         </VStack>
     )
 }
@@ -73,10 +74,9 @@ function Hero() {
                         <GreenButton />
                     </HStack>
                     <HStack spacing='23px' pt='50px'>
-                        <Socmed image={'/assets/socmed/github.svg'} />
-                        <Socmed image={'/assets/socmed/linkedIn.svg'} />
-                        <Socmed image={'/assets/socmed/github.svg'} />
-                        <Socmed image={'/assets/socmed/github.svg'} />
+                        <Socmed image={'akar-icons:github-fill'} />
+                        <Socmed image={'file-icons:gitlab'} />
+                        <Socmed image={'akar-icons:linkedin-fill'} />
                     </HStack>
                 </VStack>
                 <RightTriangle />
