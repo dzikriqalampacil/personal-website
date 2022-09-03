@@ -56,7 +56,9 @@ function Contact() {
                             <FormLabel color='#C1C1C1'>Message</FormLabel>
                             <Textarea color='#C1C1C1' bg='#343434' border='none' borderRadius={'8px'} />
                         </VStack>
-                        <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} alignSelf='flex-end'>
+                        <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} alignSelf='flex-end' _hover={{
+                            boxShadow: '0px 0px 11px #13FF00'
+                        }}>
                             <Icon icon={'bx:mail-send'} color='black' width={'26.25px'} height='26.25px' />
                             <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Send</Text>
                         </HStack>

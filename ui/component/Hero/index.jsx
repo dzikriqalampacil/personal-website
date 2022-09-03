@@ -7,7 +7,7 @@ import { Icon } from '@iconify/react'
 
 function Socmed({ image }) {
     return (
-        <VStack bg={'#353535'} w='45.75px' h='45.75px' borderRadius={'50%'} alignItems='center' justifyContent={'center'} cursor='pointer'>
+        <VStack bg={'#353535'} w='45.75px' h='45.75px' borderRadius={'50%'} alignItems='center' justifyContent={'center'} cursor='pointer' _hover={{ transform: 'scale(1.2)' }}>
             <Icon icon={image} width='26.25px' height='26.25px' color='white' />
         </VStack>
     )
@@ -16,9 +16,11 @@ function Socmed({ image }) {
 function GreenButton() {
     return (
         <Link href='#projects' style={{ textDecoration: 'none' }}>
-            <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'}>
+            <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} _hover={{
+                boxShadow: '0px 0px 11px #13FF00'
+            }} userSelect={'none'}>
                 <Image src='/assets/circle_down.svg' alt='next' width='26.25px' height='26.25px' />
-                <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Portfolio</Text>
+                <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Projects</Text>
             </HStack>
         </Link>
     )
@@ -66,11 +68,13 @@ function Hero() {
                     <Text color='#8F8F8F' fontWeight={'500'} fontSize='16px' py='10px'>
                         Full-Stack Engineer that focused on creating Web and Mobile applications. I really like different projects that solve real problems.
                     </Text>
-                    <HStack spacing='66px' pt='10px'>
-                        {/* <HStack bg='brand.black' cursor={'pointer'} padding={'8px 0'}>
-                            <Image src='/assets/cloud_down.svg' alt='next' width='26.25px' height='26.25px' />
-                            <Text color='brand.white' fontWeight={'600'} fontSize='15px'>Download CV</Text>
-                        </HStack> */}
+                    <HStack spacing={{ base: '20px', sm: '66px' }} pt='10px' >
+                        <Link href='https://drive.google.com/drive/folders/1YkL9QWExRnT5yTuUWBLvTtfayQ0niRVm?usp=sharing' style={{ textDecoration: 'none' }} isExternal>
+                            <HStack bg='brand.black' cursor={'pointer'} padding={'6px 0'} userSelect='none'>
+                                <Image src='/assets/cloud_down.svg' alt='next' width='26.25px' height='26.25px' />
+                                <Text color='brand.white' fontWeight={'600'} fontSize='15px'>Download CV</Text>
+                            </HStack>
+                        </Link>
                         <GreenButton />
                     </HStack>
                     <HStack spacing='23px' pt='50px'>

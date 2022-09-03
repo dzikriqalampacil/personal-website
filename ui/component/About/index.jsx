@@ -5,10 +5,10 @@ import React from 'react'
 function About() {
     return (
         <VStack bg={'#161616'} minH='100vh' justifyContent={'center'} position={'relative'} overflow='hidden' id='about'>
-            <Text fontWeight={700} color={'#272727'} fontSize={{ base: '42px', md: '100px', lg: '150px' }} position={'absolute'} right={{ base: '-10', md: '-70', lg: '-130' }} top='0'>
+            <Text fontWeight={700} color={'#272727'} fontSize={{ base: '42px', md: '100px', lg: '150px' }} position={'absolute'} right={{ base: '-10', md: '-70', lg: '-130' }} top='0' userSelect={'none'}>
                 ABOUT
             </Text>
-            <Image src={'/assets/balls.svg'} position={'absolute'} left='0' bottom='5' boxSize={{ base: '42px', md: '100px', lg: '170px' }} />
+            <Image userSelect={'none'} src={'/assets/balls.svg'} position={'absolute'} left='0' bottom='5' boxSize={{ base: '42px', md: '100px', lg: '170px' }} />
             <Heading fontWeight={700} color={'white'} fontSize={{ base: '23px', lg: '37.5px' }}>
                 ABOUT ME
             </Heading>

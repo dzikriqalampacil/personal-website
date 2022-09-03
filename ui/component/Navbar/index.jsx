@@ -12,14 +12,14 @@ function Item({ text, isActive, ...rest }) {
 
 function Navbar() {
     return (
-        <HStack spacing='5%' justifyContent={'center'} position='absolute' width={'100%'} zIndex={'3'} pt={5}>
-            <Link href='' >
+        <HStack spacing='5%' justifyContent={'center'} position='absolute' width={'100%'} zIndex={'3'} pt={5} userSelect={'none'}>
+            <Link href='' style={{ textDecoration: 'none' }}>
                 <Item text='Home' />
             </Link>
-            <Link href='#about' >
+            <Link href='#about' style={{ textDecoration: 'none' }}>
                 <Item text='About me' />
             </Link>
-            <Link href='#contact'>
+            <Link href='#contact' style={{ textDecoration: 'none' }}>
                 <Item text='Contact' />
             </Link>
         </HStack>
