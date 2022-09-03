@@ -64,7 +64,7 @@ function Hero() {
                         Full-Stack Engineer
                     </Text>
                     <Text color='#8F8F8F' fontWeight={'500'} fontSize='16px' py='10px'>
-                        I'm a Full-stack engineer focused on creating Web and Mobile applications. I really like different projects that solve real problems.
+                        Full-Stack Engineer that focused on creating Web and Mobile applications. I really like different projects that solve real problems.
                     </Text>
                     <HStack spacing='66px' pt='10px'>
                         {/* <HStack bg='brand.black' cursor={'pointer'} padding={'8px 0'}>
