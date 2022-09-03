@@ -1,9 +1,10 @@
 import React from 'react'
 import { Text, VStack, Heading, Image, HStack, Box, Button } from '@chakra-ui/react'
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/pagination"
+import { Pagination } from "swiper"
+import { Icon } from '@iconify/react'
 
 function Project() {
     return (
@@ -14,7 +15,7 @@ function Project() {
                     Portfolio Website
                 </Text>
                 <HStack>
-                    <Image src={'/assets/socmed/github.svg'} />
+                    <Icon icon={'akar-icons:github-fill'} width='26.25px' height='26.25px' color='white' />
                     <Text fontWeight={600} fontSize='14px' color='#E2E2E2'>
                         UI Design
                     </Text>

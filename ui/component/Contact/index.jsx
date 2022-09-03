@@ -11,16 +11,16 @@ function ItemContact({ image, text }) {
     return (
         <HStack pl={{ base: '5%', lg: '22%' }}>
             <Icon icon={image} color='white' width={'26.25px'} height='26.25px' />
-            <Text color='white'>
+            <Text color='white' fontSize='16px'>
                 {text}
             </Text>
         </HStack>
     )
 }
 
-function ItemForm({ label, type }) {
+function ItemForm({ label, type, ...other }) {
     return (
-        <VStack align='flex-start' spacing={'0'} w='full'>
+        <VStack align='flex-start' spacing={'0'} w='full' {...other}>
             <FormLabel color='#C1C1C1'>{label}</FormLabel>
             <Input type={type} bg='#343434' border='none' borderRadius={'8px'} color='#C1C1C1' />
         </VStack>
@@ -33,7 +33,7 @@ function Contact() {
             <Flex w='80%' borderRadius={'33px'} spacing={0} flexDirection={{ base: 'column', md: 'row' }}>
                 <VStack borderRadius={{ base: '33px 33px 0px 0px', md: '33px 0px 0px 33px' }} bg='#272727' w={{ base: 'full', md: '40%' }} alignItems={'flex-start'} justifyContent='center' p={{ base: '5%', md: '0' }}>
                     <HStack pl={{ base: '5%', lg: '22%' }} mb={{ base: '10px', md: '40px' }} w='full'>
-                        <Text color='white' fontWeight={600} fontSize='26px'>
+                        <Text color='white' fontWeight={600} fontSize={{ base: '21px', md: '26px' }}>
                             CONTACT
                         </Text>
                         <Box bg='white' height={'3px'} width='100%' />
@@ -47,10 +47,10 @@ function Contact() {
                 </VStack>
                 <FormControl w={{ base: 'full', md: '60%' }} p={{ base: '5%', md: '50' }} bg='#202020' borderRadius={{ base: '0px 0px 33px 33px', md: '0px 33px 33px 0px' }} >
                     <VStack align='flex-start' w='full' spacing='30px' >
-                        <HStack justify={'space-between'} spacing='5%' w='full'>
+                        <Flex justify={'space-between'} w='full' flexDirection={{ base: 'column', sm: 'row' }}>
                             <ItemForm label="Your name" />
-                            <ItemForm label="Your Email" />
-                        </HStack>
+                            <ItemForm label="Your Email" ml={{ base: '0', sm: '5%' }} mt={{ base: '30px', sm: '0' }} />
+                        </Flex>
                         <ItemForm label="Subject" />
                         <VStack align='flex-start' spacing={'0'} w='full'>
                             <FormLabel color='#C1C1C1'>Message</FormLabel>
