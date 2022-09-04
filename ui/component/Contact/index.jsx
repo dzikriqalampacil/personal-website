@@ -1,29 +1,25 @@
 import React from 'react'
 import {
-    Flex, HStack, VStack, Text, Box, Image, FormControl,
-    FormLabel,
+    Flex, HStack, VStack, Text, Box, Link, FormControl,
     Input,
-    Textarea
+    Textarea,
+    Button
 } from '@chakra-ui/react'
 import { Icon } from '@iconify/react'
+import { Formik } from "formik"
+import * as Yup from "yup"
+import TextField from './TextField'
 
-function ItemContact({ image, text }) {
+function ItemContact({ image, text, link }) {
     return (
         <HStack pl={{ base: '5%', lg: '22%' }}>
-            <Icon icon={image} color='white' width={'26.25px'} height='26.25px' />
+            <Link href={link} style={{ textDecoration: 'none' }} isExternal _hover={{ transform: 'scale(1.2)' }}>
+                <Icon icon={image} color='white' width={'26.25px'} height='26.25px' />
+            </Link>
             <Text color='white' fontSize='16px'>
                 {text}
             </Text>
         </HStack>
-    )
-}
-
-function ItemForm({ label, type, ...other }) {
-    return (
-        <VStack align='flex-start' spacing={'0'} w='full' {...other}>
-            <FormLabel color='#C1C1C1'>{label}</FormLabel>
-            <Input type={type} bg='#343434' border='none' borderRadius={'8px'} color='#C1C1C1' />
-        </VStack>
     )
 }
 
@@ -39,29 +35,56 @@ function Contact() {
                         <Box bg='white' height={'3px'} width='100%' />
                     </HStack>
                     <VStack spacing={'25px'} align='flex-start' pb={{ base: '40px', md: '90px' }} w='full'>
-                        <ItemContact image={'fluent:call-12-regular'} text={'087855474426'} />
-                        <ItemContact image={'carbon:email'} text={'dzikri.qalam01@ui.ac.id'} />
-                        <ItemContact image={'akar-icons:location'} text={'Depok, Jawa Barat, Indonesia'} />
+                        <ItemContact image={'fluent:call-12-regular'} text={'087855474426'} link={'https://wa.me/6287855474426'} />
+                        <ItemContact image={'carbon:email'} text={'dzikri.qalam01@ui.ac.id'} link={'https://mail.google.com/mail/?view=cm&source=mailto&to=dzikri.qalam01@ui.ac.id'} />
+                        <ItemContact image={'akar-icons:location'} text={'Depok, Jawa Barat, Indonesia'} link={'https://goo.gl/maps/6xLP3NgaUKH1wWj39'} />
                     </VStack>
                     <Box bg='white' height={'3px'} width='40%' alignSelf='flex-start' />
                 </VStack>
                 <FormControl w={{ base: 'full', md: '60%' }} p={{ base: '5%', md: '50' }} bg='#202020' borderRadius={{ base: '0px 0px 33px 33px', md: '0px 33px 33px 0px' }} >
                     <VStack align='flex-start' w='full' spacing='30px' >
-                        <Flex justify={'space-between'} w='full' flexDirection={{ base: 'column', sm: 'row' }}>
-                            <ItemForm label="Your name" />
-                            <ItemForm label="Your Email" ml={{ base: '0', sm: '5%' }} mt={{ base: '30px', sm: '0' }} />
-                        </Flex>
-                        <ItemForm label="Subject" />
-                        <VStack align='flex-start' spacing={'0'} w='full'>
-                            <FormLabel color='#C1C1C1'>Message</FormLabel>
-                            <Textarea color='#C1C1C1' bg='#343434' border='none' borderRadius={'8px'} />
-                        </VStack>
-                        <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} alignSelf='flex-end' _hover={{
-                            boxShadow: '0px 0px 11px #13FF00'
-                        }}>
-                            <Icon icon={'bx:mail-send'} color='black' width={'26.25px'} height='26.25px' />
-                            <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Send</Text>
-                        </HStack>
+                        <Formik
+                            initialValues={{ name: "", email: "", subject: "", message: "" }}
+                            validationSchema={Yup.object({
+                                name: Yup.string()
+                                    .required("Name is required"),
+                                email: Yup.string()
+                                    .email("Invalid Email").required("Email is required"),
+                                subject: Yup.string().required("Subject is required"),
+                                message: Yup.string()
+                                    .required("Message is required")
+                            })}
+                            onSubmit={(values, actions) => {
+                                actions.resetForm();
+                            }}
+                        >
+                            {formik => (
+                                <VStack
+                                    as="form"
+                                    align='flex-start'
+                                    w='full'
+                                    spacing='30px'
+                                    onSubmit={formik.handleSubmit}
+                                >
+                                    <Flex justify={'space-between'} w='full' flexDirection={{ base: 'column', sm: 'row' }}>
+                                        <TextField name="name" label={'Your Name'} as={Input} />
+                                        <TextField name="email" type="email" label={'Your Email'} as={Input} ml={{ base: '0', sm: '5%' }} mt={{ base: '30px', sm: '0' }} />
+                                    </Flex>
+                                    <TextField
+                                        name="subject"
+                                        label={'Your Subject'}
+                                        as={Input}
+                                    />
+                                    <TextField name="message" label={'Your Message'} as={Textarea} />
+                                    <Button type="submit" bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} alignSelf='flex-end' _hover={{
+                                        boxShadow: '0px 0px 11px #13FF00'
+                                    }}>
+                                        <Icon icon={'bx:mail-send'} color='black' width={'26.25px'} height='26.25px' />
+                                        <Text color='brand.black' fontWeight={'600'} ml={3} fontSize='15px'>Send</Text>
+                                    </Button>
+                                </VStack>
+                            )}
+                        </Formik>
                     </VStack>
                 </FormControl>
             </Flex>
