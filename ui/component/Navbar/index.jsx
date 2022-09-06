@@ -12,7 +12,7 @@ function Item({ text, isActive, ...rest }) {
 function Navbar() {
     return (
         <HStack spacing='5%' justifyContent={'center'} position='absolute' width={'100%'} zIndex={'3'} pt={5} userSelect={'none'}>
-            <Link href='' style={{ textDecoration: 'none' }}>
+            <Link href='/' style={{ textDecoration: 'none' }}>
                 <Item text='Home' />
             </Link>
             <Link href='#about' style={{ textDecoration: 'none' }}>
