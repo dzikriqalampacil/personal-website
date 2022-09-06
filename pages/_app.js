@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
         <title>Dzikri Qalam Hatorangan</title>
         <meta name='description' content="A personal website where I can showcase of my projects, and some of my experiences. You can contact me too if you like." />
 
-        <meta property="og:image" content="/assets/personal-web.png" />
+        <meta property="og:image" content="/assets/personal.jpg" />
         <meta property="og:title" content="Dzikri Qalam Hatorangan" />
         <meta property="og:description" content="A personal website where I can showcase of my projects, and some of my experiences. You can contact me too if you like." />
         <meta property="og:image:width" content="1200" />
