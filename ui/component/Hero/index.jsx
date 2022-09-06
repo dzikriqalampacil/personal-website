@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Text, VStack, HStack, Flex, Link } from '@chakra-ui/react'
 import Navbar from '../Navbar'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
@@ -19,7 +18,7 @@ function GreenButton() {
             <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} _hover={{
                 boxShadow: '0px 0px 11px #13FF00'
             }} userSelect={'none'}>
-                <Image src='/assets/circle_down.svg' alt='button image' width='26.25px' height='26.25px' />
+                <img src='/assets/circle_down.svg' alt='button image' width='26.25' height='26.25' />
                 <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Projects</Text>
             </HStack>
         </Link>
@@ -71,7 +70,7 @@ function Hero() {
                     <HStack spacing={{ base: '20px', sm: '66px' }} pt='10px' >
                         <Link href='https://drive.google.com/drive/folders/1YkL9QWExRnT5yTuUWBLvTtfayQ0niRVm?usp=sharing' style={{ textDecoration: 'none' }} isExternal>
                             <HStack bg='brand.black' cursor={'pointer'} padding={'6px 0'} userSelect='none'>
-                                <Image src='/assets/cloud_down.svg' alt='next' width='26.25px' height='26.25px' />
+                                <img src='/assets/cloud_down.svg' alt='next' width='26.25' height='26.25' />
                                 <Text color='brand.white' fontWeight={'600'} fontSize='15px'>Download CV</Text>
                             </HStack>
                         </Link>
