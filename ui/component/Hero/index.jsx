@@ -19,7 +19,7 @@ function GreenButton() {
             <HStack bg='brand.green' borderRadius={'10px'} padding={'6px 28px'} cursor={'pointer'} _hover={{
                 boxShadow: '0px 0px 11px #13FF00'
             }} userSelect={'none'}>
-                <Image src='/assets/circle_down.svg' alt='next' width='26.25px' height='26.25px' />
+                <Image src='/assets/circle_down.svg' alt='button image' width='26.25px' height='26.25px' />
                 <Text color='brand.black' fontWeight={'600'} fontSize='15px'>Projects</Text>
             </HStack>
         </Link>

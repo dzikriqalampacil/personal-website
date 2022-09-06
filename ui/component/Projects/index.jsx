@@ -9,7 +9,7 @@ import { Icon } from '@iconify/react'
 function Project({ title, stacks, link, image, viewCode }) {
     return (
         <VStack bg='#272727' borderRadius={'18px'} spacing='0' boxShadow='0px 4px 40px rgba(0, 0, 0, 0.16)' zIndex='2' w={{ base: '300px', md: '412px' }}>
-            <Image src={image} borderRadius="18px 18px 0 0" userSelect={'none'} />
+            <Image src={image} borderRadius="18px 18px 0 0" userSelect={'none'} alt='Project Image'/>
             <VStack p='25px' align='flex-start' justifyContent={'flex-start'} w='full' borderRadius={'18px'}>
                 <Text fontWeight={700} fontSize='18px' color='white' userSelect={'none'}>
                     {title}

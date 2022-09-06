@@ -8,7 +8,7 @@ function About() {
             <Text fontWeight={700} color={'#272727'} fontSize={{ base: '42px', md: '100px', lg: '150px' }} position={'absolute'} right={{ base: '-10', md: '-70', lg: '-130' }} top='0' userSelect={'none'}>
                 ABOUT
             </Text>
-            <Image userSelect={'none'} src={'/assets/balls.svg'} position={'absolute'} left='0' bottom='5' boxSize={{ base: '42px', md: '100px', lg: '170px' }} />
+            <Image userSelect={'none'} src={'/assets/balls.svg'} position={'absolute'} left='0' bottom='5' boxSize={{ base: '42px', md: '100px', lg: '170px' }} alt='decoration'/>
             <Heading fontWeight={700} color={'white'} fontSize={{ base: '23px', lg: '37.5px' }}>
                 ABOUT ME
             </Heading>

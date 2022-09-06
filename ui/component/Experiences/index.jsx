@@ -23,7 +23,7 @@ function Experiences() {
             <Text userSelect={'none'} fontWeight={700} color={'#272727'} fontSize={{ base: '42px', md: '100px', lg: '150px' }} position={'absolute'} left={{ base: '-4', md: '-10', lg: '-65' }} bottom='5'>
                 UT ME
             </Text>
-            <Image userSelect={'none'} src={'/assets/exballs.svg'} position={'absolute'} right='5' top='5' boxSize={{ base: '42px', md: '100px', lg: '170px' }} />
+            <Image userSelect={'none'} src={'/assets/exballs.svg'} position={'absolute'} right='5' top='5' boxSize={{ base: '42px', md: '100px', lg: '170px' }} alt='decoration' />
             <SimpleGrid columns={{ base: 1, md: 2 }} pt='70px' spacingX={'17%'} spacingY={{ base: 100, md: 0 }} w={{ base: '90%', md: '60%' }} alignSelf={'center'}>
                 <VStack alignItems={'flex-start'} spacing={'51px'}>
                     <Heading fontWeight={700} color={'white'} fontSize={{ base: '24px', lg: '33px' }}>Education</Heading>
