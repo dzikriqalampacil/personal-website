@@ -13,7 +13,7 @@ import TextField from './TextField'
 function ItemContact({ image, text, link }) {
     return (
         <HStack pl={{ base: '5%', lg: '22%' }}>
-            <Link href={link} style={{ textDecoration: 'none' }} isExternal _hover={{ transform: 'scale(1.2)' }}>
+            <Link href={link} style={{ textDecoration: 'none' }} isExternal _hover={{ transform: 'scale(1.2)' }} aria-label={text}>
                 <Icon icon={image} color='white' width={'26.25px'} height='26.25px' />
             </Link>
             <Text color='white' fontSize='16px'>
