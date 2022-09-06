@@ -9,7 +9,7 @@ import { Icon } from '@iconify/react'
 function Project({ title, stacks, link, image, viewCode }) {
     return (
         <VStack bg='#272727' borderRadius={'18px'} spacing='0' boxShadow='0px 4px 40px rgba(0, 0, 0, 0.16)' zIndex='2' w={{ base: '300px', md: '412px' }}>
-            <Image src={image} borderRadius="18px 18px 0 0" userSelect={'none'} alt='Project Image'/>
+            <Image src={image} borderRadius="18px 18px 0 0" userSelect={'none'} alt='Project Image' w={{ base: '300px', md: '412px' }} h={{ base: '145.6311px', md: '200px' }} />
             <VStack p='25px' align='flex-start' justifyContent={'flex-start'} w='full' borderRadius={'18px'}>
                 <Text fontWeight={700} fontSize='18px' color='white' userSelect={'none'}>
                     {title}
@@ -52,35 +52,35 @@ function Projects() {
             title: "Property Agent",
             stacks: ["akar-icons:react-fill", "fa6-brands:golang"],
             link: "https://nanyeravictoria.com/",
-            image: "/assets/era_victoria.png",
+            image: "/assets/era.png",
             viewCode: ""
         },
         {
             title: "Festival Rakyat UI",
             stacks: ["akar-icons:gatsby-fill", "ion:logo-nodejs"],
             link: "https://fesrak-staging.netlify.app/",
-            image: "/assets/fesrak.png",
+            image: "/assets/fesrak.jpg",
             viewCode: ""
         },
         {
             title: "LPJ Online",
             stacks: ["akar-icons:react-fill", "tabler:brand-django"],
             link: "https://bemapps.cs.ui.ac.id/LPJ",
-            image: "/assets/lpj-online.png",
+            image: "/assets/lpj.jpg",
             viewCode: ""
         },
         {
             title: "Best Staff",
             stacks: ["akar-icons:react-fill", "tabler:brand-django"],
             link: "https://bemapps.cs.ui.ac.id/best-staff",
-            image: "/assets/best-staff.png",
+            image: "/assets/best-staff.jpg",
             viewCode: ""
         },
         {
             title: "Personal Website",
             stacks: ["teenyicons:nextjs-outline"],
             link: "/",
-            image: "/assets/personal-web.png",
+            image: "/assets/personal.jpg",
             viewCode: "https://github.com/dzikriqalampacil/personal-website"
         }
     ]
