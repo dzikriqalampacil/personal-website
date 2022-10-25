@@ -32,6 +32,9 @@ function Skills() {
                 <Item image={'bxl:flutter'} text={'Flutter'} />
                 <Item image={'ion:logo-nodejs'} text={'NodeJS'} />
                 <Item image={'simple-icons:springboot'} text={'Springboot'} />
+                <Item image={'akar-icons:postgresql-fill'} text={'PostgreSQL'} />
+                <Item image={'simple-icons:mysql'} text={'MySQL'} />
+                <Item image={'tabler:brand-kotlin'} text={'Kotlin'} />
             </SimpleGrid>
         </VStack >
     )
