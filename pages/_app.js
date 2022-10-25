@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
 
         <title>Dzikri Qalam Hatorangan</title>
         <meta name='description' content="A personal website where I can showcase of my projects, and some of my experiences. You can contact me too if you like." />
+        <link rel="icon" href="/assets/favicon.ico" />
 
         <meta property="og:image" content="/assets/personal.jpg" />
         <meta property="og:title" content="Dzikri Qalam Hatorangan" />
