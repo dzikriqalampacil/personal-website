@@ -49,7 +49,7 @@ function Projects() {
 
     const allProject = [
         {
-            title: "Property Agent",
+            title: "Property Agent ERA",
             stacks: ["akar-icons:react-fill", "fa6-brands:golang"],
             link: "https://nanyeravictoria.com/",
             image: "/assets/era.png",
@@ -60,6 +60,13 @@ function Projects() {
             stacks: ["akar-icons:gatsby-fill", "ion:logo-nodejs"],
             link: "https://fesrak-staging.netlify.app/",
             image: "/assets/fesrak.jpg",
+            viewCode: ""
+        },
+        {
+            title: "Company Profile PT TJN",
+            stacks: ["teenyicons:nextjs-outline"],
+            link: "https://coconutoil-tjn.vercel.app/",
+            image: "/assets/tjn_web.png",
             viewCode: ""
         },
         {
