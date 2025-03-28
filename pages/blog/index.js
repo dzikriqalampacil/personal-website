@@ -9,27 +9,9 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import NextLink from "next/link";
+import { blogPosts } from "../../data/blog-posts";
 
 function Blog() {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Getting Started with Web Development",
-      excerpt:
-        "Learn the fundamentals of web development and start your journey...",
-      date: "2024-03-28",
-      slug: "getting-started-with-web-development",
-    },
-    {
-      id: 2,
-      title: "The Future of Frontend Development",
-      excerpt:
-        "Exploring the latest trends and technologies in frontend development...",
-      date: "2024-03-27",
-      slug: "future-of-frontend-development",
-    },
-  ];
-
   return (
     <VStack
       bg={"#161616"}
@@ -110,7 +92,7 @@ function Blog() {
                   {post.title}
                 </Heading>
                 <Text color="#8F8F8F" fontSize="md">
-                  {post.excerpt}
+                  {post.content.split("\n")[1]}
                 </Text>
               </Box>
             </Link>

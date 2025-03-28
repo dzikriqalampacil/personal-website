@@ -13,70 +13,47 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
+import { blogPosts } from "../../data/blog-posts";
 
 function BlogPost() {
   const router = useRouter();
   const { slug } = router.query;
   const [headings, setHeadings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  // Example blog post data - you can replace this with actual data fetching
-  const post = {
-    title: "Getting Started with Web Development",
-    content: `## Introduction
-Web development is an exciting journey that combines creativity with technical skills. In this post, we'll explore the fundamentals of web development and how to get started.
-
-![Test Image](/favicon.png)
-
-## The Basics
-When starting with web development, it's important to understand the core technologies:
-
-1. HTML - Structure
-2. CSS - Styling
-3. JavaScript - Interactivity
-
-![Test Image 2](/favicon.png)
-
-## Next Steps
-After mastering the basics, you can move on to more advanced topics like:
-
-- React and modern frameworks
-- Backend development
-- Database management
-- Deployment strategies
-
-Remember, the key to success in web development is consistent practice and staying updated with the latest technologies.`,
-    date: "2024-03-28",
-    author: "Dzikri Qalam Hatorangan",
-  };
+  const [post, setPost] = useState(null);
 
   useEffect(() => {
     if (router.isReady) {
       setIsLoading(false);
-      // Function to extract headings from content
-      const getHeadings = () => {
-        const headings = [];
-        const lines = post.content.split("\n");
+      const currentPost = blogPosts.find((p) => p.slug === slug);
+      setPost(currentPost);
 
-        lines.forEach((line) => {
-          if (line.startsWith("## ")) {
-            const text = line.replace("## ", "").trim();
-            const id = text.toLowerCase().replace(/\s+/g, "-");
-            headings.push({
-              text,
-              id,
-            });
-          }
-        });
+      if (currentPost) {
+        // Function to extract headings from content
+        const getHeadings = () => {
+          const headings = [];
+          const lines = currentPost.content.split("\n");
 
-        setHeadings(headings);
-      };
+          lines.forEach((line) => {
+            if (line.startsWith("## ")) {
+              const text = line.replace("## ", "").trim();
+              const id = text.toLowerCase().replace(/\s+/g, "-");
+              headings.push({
+                text,
+                id,
+              });
+            }
+          });
 
-      getHeadings();
+          setHeadings(headings);
+        };
+
+        getHeadings();
+      }
     }
-  }, [router.isReady, post.content]);
+  }, [router.isReady, slug]);
 
-  if (isLoading) {
+  if (isLoading || !post) {
     return (
       <VStack
         bg={"#161616"}
