@@ -29,33 +29,4 @@ Remember, the key to success in web development is consistent practice and stayi
     author: "Dzikri Qalam Hatorangan",
     slug: "getting-started-with-web-development",
   },
-  {
-    id: 2,
-    title: "The Future of Frontend Development",
-    content: `## The Evolution of Frontend
-Frontend development has come a long way from simple HTML pages to complex, interactive applications.
-
-![Test Image](/favicon.png)
-
-## Current Trends
-Today's frontend landscape is dominated by:
-
-1. React and its ecosystem
-2. Next.js for server-side rendering
-3. TypeScript for type safety
-4. Modern CSS frameworks
-
-## What's Next?
-The future of frontend development looks promising with:
-
-- Web Components
-- Edge Computing
-- AI Integration
-- Progressive Web Apps
-
-Stay tuned for more updates on the ever-evolving world of frontend development!`,
-    date: "2024-03-27",
-    author: "Dzikri Qalam Hatorangan",
-    slug: "future-of-frontend-development",
-  },
 ];
