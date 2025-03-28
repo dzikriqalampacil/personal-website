@@ -6,22 +6,24 @@ import {
   Link,
   Container,
   HStack,
-  Flex,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react"; // Removed useCallback as throttle handles it
 import { useRouter } from "next/router";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { blogPosts } from "../../data/blog-posts";
+import throttle from "lodash.throttle";
 
 function BlogPost() {
   const router = useRouter();
   const { slug } = router.query;
   const [headings, setHeadings] = useState([]);
+  const [activeHeadingId, setActiveHeadingId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [post, setPost] = useState(null);
+  const headingElementsRef = useRef({});
 
+  // Effect to extract headings from content
   useEffect(() => {
     if (router.isReady) {
       setIsLoading(false);
@@ -29,29 +31,104 @@ function BlogPost() {
       setPost(currentPost);
 
       if (currentPost) {
-        // Function to extract headings from content
         const getHeadings = () => {
-          const headings = [];
+          const headingsArr = [];
           const lines = currentPost.content.split("\n");
+          const tempHeadingMap = {};
 
           lines.forEach((line) => {
             if (line.startsWith("## ")) {
               const text = line.replace("## ", "").trim();
-              const id = text.toLowerCase().replace(/\s+/g, "-");
-              headings.push({
+              let id = text
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "");
+              let counter = 1;
+              let potentialId = id;
+              while (tempHeadingMap[potentialId]) {
+                counter++;
+                potentialId = `${id}-${counter}`;
+              }
+              id = potentialId;
+              tempHeadingMap[id] = true;
+              headingsArr.push({
                 text,
                 id,
               });
             }
           });
-
-          setHeadings(headings);
+          setHeadings(headingsArr);
         };
-
         getHeadings();
+      } else {
+        setHeadings([]);
       }
     }
   }, [router.isReady, slug]);
+
+  // Effect to handle scroll listening and active heading update
+  useEffect(() => {
+    if (!headings.length) return;
+
+    const calculateOffsets = () => {
+      const offsets = {};
+      headings.forEach(({ id }) => {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          offsets[id] = rect.top + window.scrollY;
+        }
+      });
+      headingElementsRef.current = offsets;
+    };
+
+    // Recalculate offsets slightly after headings are set, allowing DOM to update
+    const timeoutId = setTimeout(calculateOffsets, 100);
+
+    const scrollOffset = 110; // Offset from top for activation
+    const bottomScrollBuffer = 50; // Buffer for detecting page bottom
+
+    const handleScroll = throttle(() => {
+      const currentScrollY = window.scrollY;
+      const pageBottom =
+        document.documentElement.scrollHeight - window.innerHeight;
+      let currentActiveId = null;
+
+      // Check if scrolled to the very bottom
+      if (currentScrollY >= pageBottom - bottomScrollBuffer) {
+        currentActiveId = headings[headings.length - 1]?.id || null; // Activate last heading
+      } else {
+        const headingIds = Object.keys(headingElementsRef.current);
+        for (let i = headingIds.length - 1; i >= 0; i--) {
+          const id = headingIds[i];
+          const offsetTop = headingElementsRef.current[id];
+
+          if (offsetTop && currentScrollY >= offsetTop - scrollOffset) {
+            currentActiveId = id;
+            break;
+          }
+        }
+      }
+      // Only update state if the active ID has actually changed
+      setActiveHeadingId((prevId) => {
+        if (prevId !== currentActiveId) {
+          // Recalculate offsets if ID changes, ensures accuracy if content shifts dynamically
+          // Note: Be cautious with this if content shifts *a lot*, might cause performance issues
+          // calculateOffsets();
+        }
+        return currentActiveId;
+      });
+    }, 150);
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function
+    return () => {
+      clearTimeout(timeoutId); // Clear the initial timeout
+      window.removeEventListener("scroll", handleScroll);
+      handleScroll.cancel();
+    };
+  }, [headings]); // Rerun effect only when headings themselves change
 
   if (isLoading || !post) {
     return (
@@ -72,13 +149,7 @@ function BlogPost() {
   }
 
   return (
-    <VStack
-      bg={"#161616"}
-      minH="100vh"
-      position={"relative"}
-      overflow="hidden"
-      id="blog-post"
-    >
+    <VStack bg={"#161616"} minH="100vh" position={"relative"} id="blog-post">
       <Text
         fontWeight={700}
         color={"#272727"}
@@ -87,6 +158,7 @@ function BlogPost() {
         right={{ base: "-10", md: "-70", lg: "-130" }}
         top="0"
         userSelect={"none"}
+        zIndex={0}
       >
         BLOG
       </Text>
@@ -99,52 +171,84 @@ function BlogPost() {
         left={{ base: "-10", md: "-70", lg: "-130" }}
         bottom="0"
         userSelect={"none"}
+        zIndex={0}
       >
         BLOG
       </Text>
 
-      <Container maxW="container.xl" pt="100px" pb="50px">
-        <HStack spacing={8} align="start">
-          {/* Table of Contents */}
+      <Container
+        maxW="container.xl"
+        pt={{ base: "60px", md: "80px" }}
+        pb="50px"
+        zIndex={1}
+        position="relative"
+      >
+        <HStack spacing={10} align="start">
           <Box
             position="sticky"
-            top="120px"
-            w="250px"
+            top={{ base: "60px", lg: "40px" }}
+            w="300px"
             display={{ base: "none", lg: "block" }}
             p={4}
+            alignSelf="flex-start"
           >
-            <Text color="brand.green" fontSize="sm" fontWeight="bold" mb={4}>
+            <Text color="brand.green" fontSize="lg" fontWeight="bold" mb={5}>
               Table of Contents
             </Text>
-            <VStack spacing={3} align="start">
-              {headings.map((heading) => (
-                <Link
-                  key={heading.id}
-                  href={`#${heading.id}`}
-                  color="#8F8F8F"
-                  fontSize="sm"
-                  pl={2}
-                  borderLeft="2px solid transparent"
-                  _hover={{
-                    color: "brand.green",
-                    borderLeftColor: "brand.green",
-                  }}
-                  transition="all 0.2s"
-                >
-                  {heading.text}
-                </Link>
-              ))}
+            <VStack spacing={4} align="start">
+              {headings.map((heading) => {
+                const isActive = heading.id === activeHeadingId;
+                return (
+                  <Link
+                    key={heading.id}
+                    href={`#${heading.id}`}
+                    color={isActive ? "brand.green" : "#8F8F8F"}
+                    fontSize="md"
+                    pl={2}
+                    borderLeft="3px solid"
+                    borderLeftColor={isActive ? "brand.green" : "transparent"}
+                    lineHeight="1.4"
+                    fontWeight={isActive ? "bold" : "normal"}
+                    textDecoration="none" // Ensure no underline by default
+                    // Removed the _hover prop entirely
+                    transition="color 0.15s ease-in-out, border-color 0.15s ease-in-out, font-weight 0.15s ease-in-out" // Refined transition
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActiveHeadingId(heading.id); // Set active immediately
+                      const targetElement = document.getElementById(heading.id);
+                      if (targetElement) {
+                        const offset = 100;
+                        const bodyRect =
+                          document.body.getBoundingClientRect().top;
+                        const elementRect =
+                          targetElement.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                        setTimeout(() => {
+                          history.pushState(null, null, `#${heading.id}`);
+                        }, 400);
+                      }
+                    }}
+                  >
+                    {heading.text}
+                  </Link>
+                );
+              })}
             </VStack>
           </Box>
 
-          {/* Main Content */}
-          <Box flex={1}>
+          <Box flex={1} minW={0}>
             <VStack spacing={8} align="stretch">
               <Box>
                 <Heading
                   fontWeight={700}
                   color={"white"}
-                  fontSize={{ base: "23px", lg: "37.5px" }}
+                  fontSize={{ base: "28px", md: "3xl", lg: "4xl" }}
                   mb={4}
                 >
                   {post.title}
@@ -161,63 +265,110 @@ function BlogPost() {
 
                 <Box
                   w="100%"
-                  color="#8F8F8F"
-                  fontSize="lg"
+                  color="#AEAEAE"
+                  fontSize={{ base: "md", lg: "lg" }}
                   lineHeight="1.8"
                   sx={{
                     "& img": {
-                      width: "100%",
+                      maxWidth: "100%",
                       height: "auto",
                       borderRadius: "10px",
-                      margin: "2rem 0",
-                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                      margin: "2.5rem 0",
+                      boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
                     },
                     "& h2": {
                       color: "white",
-                      fontSize: "2xl",
+                      fontSize: { base: "xl", md: "2xl" },
                       fontWeight: "bold",
-                      marginTop: "2rem",
-                      marginBottom: "1rem",
+                      marginTop: "3rem",
+                      marginBottom: "1.25rem",
+                      borderBottom: "1px solid #444",
+                      paddingBottom: "0.5rem",
+                      scrollMarginTop: "100px", // Match JS offset
                     },
                     "& ul, & ol": {
-                      marginLeft: "1.5rem",
-                      marginBottom: "1rem",
+                      marginLeft: "1.8rem",
+                      marginBottom: "1.25rem",
                     },
                     "& li": {
-                      marginBottom: "0.5rem",
+                      marginBottom: "0.6rem",
                     },
                     "& p": {
-                      marginBottom: "1rem",
+                      marginBottom: "1.25rem",
+                    },
+                    "& a": {
+                      color: "brand.green",
+                      textDecoration: "underline",
+                      _hover: {
+                        textDecoration: "none",
+                        opacity: 0.8,
+                      },
+                    },
+                    "& code:not(pre > code)": {
+                      backgroundColor: "#2D3748",
+                      color: "#EDF2F7",
+                      padding: "0.2em 0.4em",
+                      borderRadius: "3px",
+                      fontSize: "sm",
+                    },
+                    "& pre": {
+                      backgroundColor: "#1A202C",
+                      padding: "1rem",
+                      borderRadius: "md",
+                      overflowX: "auto",
+                      fontSize: "sm",
+                      lineHeight: "1.5",
+                      marginBottom: "1.25rem",
+                    },
+                    "& pre code": {
+                      backgroundColor: "transparent",
+                      color: "inherit",
+                      padding: 0,
+                      fontSize: "inherit",
+                      fontFamily: "monospace",
                     },
                   }}
                 >
                   <ReactMarkdown
                     components={{
-                      h2: ({ children }) => {
-                        const id = children
-                          .toString()
-                          .toLowerCase()
-                          .replace(/[^a-z0-9]+/g, "-")
-                          .replace(/(^-|-$)/g, "");
+                      h2: ({ node, children, ...props }) => {
+                        const childrenText = node.children
+                          .map((child) => {
+                            if (child.type === "text") return child.value;
+                            return "";
+                          })
+                          .join("");
+                        const headingData = headings.find(
+                          (h) => h.text === childrenText
+                        );
+                        const id = headingData
+                          ? headingData.id
+                          : childrenText
+                              .toLowerCase()
+                              .replace(/[^a-z0-9]+/g, "-")
+                              .replace(/(^-|-$)/g, "");
+
                         return (
-                          <h2 id={id} style={{ scrollMarginTop: "100px" }}>
+                          <h2 id={id} {...props}>
                             {children}
                           </h2>
                         );
                       },
-                      img: ({ src, alt }) => (
-                        <Box width="100%" margin="2rem 0">
+                      img: ({ node, src, alt, ...props }) => (
+                        <Box width="100%" marginY="2.5rem">
                           <Image
                             src={src}
                             alt={alt}
-                            width={1200}
-                            height={675}
+                            width={1000}
+                            height={562}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                             style={{
                               width: "100%",
                               height: "auto",
                               borderRadius: "10px",
-                              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                              boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
                             }}
+                            {...props}
                           />
                         </Box>
                       ),
@@ -228,16 +379,17 @@ function BlogPost() {
                 </Box>
               </Box>
 
-              <Box mt={8}>
+              <Box mt={12}>
                 <Link
                   href="/blog"
                   color="brand.green"
-                  display="inline-block"
+                  display="inline-flex"
+                  alignItems="center"
                   transition="all 0.2s"
                   _hover={{
                     textDecoration: "none",
                     textShadow: "0 0 12px rgba(19, 255, 0, 0.6)",
-                    transform: "translateX(-4px)",
+                    transform: "translateX(-5px)",
                   }}
                   fontSize="md"
                   fontWeight="medium"
