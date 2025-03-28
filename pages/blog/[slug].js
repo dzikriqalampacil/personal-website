@@ -122,10 +122,22 @@ Here's how you can begin your web development journey:
       <Text
         fontWeight={700}
         color={"#272727"}
-        fontSize={{ base: "42px", md: "100px", lg: "150px" }}
+        fontSize={{ base: "32px", md: "80px", lg: "120px" }}
         position={"absolute"}
         right={{ base: "-10", md: "-70", lg: "-130" }}
         top="0"
+        userSelect={"none"}
+      >
+        BLOG
+      </Text>
+
+      <Text
+        fontWeight={700}
+        color={"#272727"}
+        fontSize={{ base: "32px", md: "80px", lg: "120px" }}
+        position={"absolute"}
+        left={{ base: "-10", md: "-70", lg: "-130" }}
+        bottom="0"
         userSelect={"none"}
       >
         BLOG
