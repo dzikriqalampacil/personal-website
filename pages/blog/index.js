@@ -7,11 +7,17 @@ import {
   Link,
   Container,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { blogPosts } from "../../data/blog-posts";
 
 function Blog() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    setPosts(blogPosts);
+  }, []);
+
   return (
     <VStack
       bg={"#161616"}
@@ -65,7 +71,7 @@ function Blog() {
           w={{ base: "90%", md: "80%" }}
           pt="40px"
         >
-          {blogPosts.map((post) => (
+          {posts.map((post) => (
             <Link
               as={NextLink}
               href={`/blog/${post.slug}`}
