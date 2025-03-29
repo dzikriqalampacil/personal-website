@@ -131,21 +131,21 @@ function Contact() {
             w="full"
           >
             <ItemContact
-              image={"fluent:call-12-regular"}
+              image={"ic:baseline-whatsapp"}
               text={"087855474426"}
               link={"https://wa.me/6287855474426"}
             />
             <ItemContact
               image={"carbon:email"}
-              text={"dzikri.qalam01@ui.ac.id"}
+              text={"dzikriqalam@gmail.com"}
               link={
-                "https://mail.google.com/mail/?view=cm&source=mailto&to=dzikri.qalam01@ui.ac.id"
+                "https://mail.google.com/mail/?view=cm&source=mailto&to=dzikriqalam@gmail.com"
               }
             />
             <ItemContact
               image={"akar-icons:location"}
-              text={"Depok, Jawa Barat, Indonesia"}
-              link={"https://goo.gl/maps/6xLP3NgaUKH1wWj39"}
+              text={"Bekasi, Jawa Barat, Indonesia"}
+              link={"https://maps.app.goo.gl/vaE4UGpFTSM4jdxX8"}
             />
           </VStack>
           <Box bg="white" height={"3px"} width="40%" alignSelf="flex-start" />
