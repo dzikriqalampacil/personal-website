@@ -117,10 +117,10 @@ function Hero() {
             fontWeight={"700"}
             fontSize={{ base: "23px", lg: "37.5px" }}
           >
-            Full-Stack Engineer
+            Software Engineer
           </Text>
           <Text color="#8F8F8F" fontWeight={"500"} fontSize="16px" py="10px">
-            Full-Stack Engineer that focused on creating Web and Mobile
+            Software Engineer that focused on creating Web and Mobile
             applications. I really like different projects that solve real
             problems.
           </Text>
