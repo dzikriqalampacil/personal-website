@@ -243,14 +243,14 @@ function BlogPost() {
                   {post.title}
                 </Heading>
 
-                <Box mb={8}>
-                  <Text color="brand.green" fontSize="sm" mb={2}>
+                <HStack spacing={2}>
+                  <Text color="brand.green" fontSize="sm">
                     {new Date(post.date).toLocaleDateString()}
                   </Text>
                   <Text color="#8F8F8F" fontSize="sm">
                     By {post.author}
                   </Text>
-                </Box>
+                </HStack>
 
                 <Box
                   w="100%"
@@ -262,28 +262,31 @@ function BlogPost() {
                       maxWidth: "100%",
                       height: "auto",
                       borderRadius: "10px",
-                      margin: "2.5rem 0",
+                      margin: "1.5rem 0",
                       boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
                     },
                     "& h2": {
                       color: "white",
                       fontSize: { base: "xl", md: "2xl" },
                       fontWeight: "bold",
-                      marginTop: "3rem",
-                      marginBottom: "1.25rem",
+                      marginTop: "2rem",
+                      marginBottom: "1rem",
                       borderBottom: "1px solid #444",
                       paddingBottom: "0.5rem",
                       scrollMarginTop: "100px",
                     },
                     "& ul, & ol": {
                       marginLeft: "1.8rem",
-                      marginBottom: "1.25rem",
+                      marginBottom: "1rem",
                     },
                     "& li": {
-                      marginBottom: "0.6rem",
+                      marginBottom: "0.5rem",
                     },
                     "& p": {
-                      marginBottom: "1.25rem",
+                      marginBottom: "1rem",
+                    },
+                    "& p:first-of-type": {
+                      marginTop: 0,
                     },
                     "& a": {
                       color: "brand.green",
