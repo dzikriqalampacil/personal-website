@@ -80,12 +80,12 @@ function Experiences() {
               Organization
             </Heading>
             <Item
-              date={"March 2022 - Present"}
+              date={"March 2022 - February 2023"}
               title={"Head of IT Department"}
               institution={"BEM Fasilkom UI"}
             />
             <Item
-              date={"March 2021 - Feb 2022"}
+              date={"March 2021 - February 2022"}
               title={"Staff of IT Department"}
               institution={"BEM Fasilkom UI"}
             />
