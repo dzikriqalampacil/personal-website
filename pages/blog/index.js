@@ -149,7 +149,7 @@ function Blog() {
 
       <Box
         position="absolute"
-        bottom={{ base: "30px", md: "60px" }} // Adjusted bottom positioning
+        bottom={{ base: "30px", md: "60px" }}
         left="50%"
         transform="translateX(-50%)"
         zIndex={2}
@@ -158,23 +158,23 @@ function Blog() {
           <IconButton
             aria-label="Go to Homepage"
             icon={<Icon as={FaHome} boxSize={6} />}
-            variant="outline" // Use outline variant for the border
-            borderColor="#555" // Set initial border color
-            color="#AEAEAE" // Set initial icon color
+            variant="outline"
+            borderColor="#555"
+            color="#AEAEAE"
             size="lg"
-            isRound={true} // Ensure it's circular
-            transition="all 0.2s ease-in-out" // Transition all properties
+            isRound={true}
+            transition="all 0.2s ease-in-out"
             _hover={{
-              borderColor: "brand.green", // Change border color on hover
-              color: "brand.green", // Change icon color on hover
-              bg: "rgba(19, 255, 0, 0.05)", // Optional subtle bg tint on hover
-              transform: "scale(1.05) translateY(-2px)", // Scale and slight lift
+              borderColor: "brand.green",
+              color: "brand.green",
+              bg: "rgba(19, 255, 0, 0.05)",
+              transform: "scale(1.05) translateY(-2px)",
             }}
             _active={{
-              borderColor: "brand.green", // Keep border green
-              color: "brand.green", // Keep icon green
-              bg: "rgba(19, 255, 0, 0.1)", // Darker bg tint on active
-              transform: "scale(1.0) translateY(0)", // Reset transform on active
+              borderColor: "brand.green",
+              color: "brand.green",
+              bg: "rgba(19, 255, 0, 0.1)",
+              transform: "scale(1.0) translateY(0)",
             }}
           />
         </NextLink>

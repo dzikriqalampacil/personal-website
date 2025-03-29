@@ -7,7 +7,7 @@ import {
   Container,
   HStack,
 } from "@chakra-ui/react";
-import React, { useState, useEffect, useRef } from "react"; // Removed useCallback as throttle handles it
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
@@ -23,7 +23,6 @@ function BlogPost() {
   const [post, setPost] = useState(null);
   const headingElementsRef = useRef({});
 
-  // Effect to extract headings from content
   useEffect(() => {
     if (router.isReady) {
       setIsLoading(false);
@@ -66,7 +65,6 @@ function BlogPost() {
     }
   }, [router.isReady, slug]);
 
-  // Effect to handle scroll listening and active heading update
   useEffect(() => {
     if (!headings.length) return;
 
@@ -82,11 +80,10 @@ function BlogPost() {
       headingElementsRef.current = offsets;
     };
 
-    // Recalculate offsets slightly after headings are set, allowing DOM to update
     const timeoutId = setTimeout(calculateOffsets, 100);
 
-    const scrollOffset = 110; // Offset from top for activation
-    const bottomScrollBuffer = 50; // Buffer for detecting page bottom
+    const scrollOffset = 110;
+    const bottomScrollBuffer = 50;
 
     const handleScroll = throttle(() => {
       const currentScrollY = window.scrollY;
@@ -94,9 +91,8 @@ function BlogPost() {
         document.documentElement.scrollHeight - window.innerHeight;
       let currentActiveId = null;
 
-      // Check if scrolled to the very bottom
       if (currentScrollY >= pageBottom - bottomScrollBuffer) {
-        currentActiveId = headings[headings.length - 1]?.id || null; // Activate last heading
+        currentActiveId = headings[headings.length - 1]?.id || null;
       } else {
         const headingIds = Object.keys(headingElementsRef.current);
         for (let i = headingIds.length - 1; i >= 0; i--) {
@@ -109,26 +105,20 @@ function BlogPost() {
           }
         }
       }
-      // Only update state if the active ID has actually changed
+
       setActiveHeadingId((prevId) => {
-        if (prevId !== currentActiveId) {
-          // Recalculate offsets if ID changes, ensures accuracy if content shifts dynamically
-          // Note: Be cautious with this if content shifts *a lot*, might cause performance issues
-          // calculateOffsets();
-        }
         return currentActiveId;
       });
     }, 150);
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup function
     return () => {
-      clearTimeout(timeoutId); // Clear the initial timeout
+      clearTimeout(timeoutId);
       window.removeEventListener("scroll", handleScroll);
       handleScroll.cancel();
     };
-  }, [headings]); // Rerun effect only when headings themselves change
+  }, [headings]);
 
   if (isLoading || !post) {
     return (
@@ -209,12 +199,11 @@ function BlogPost() {
                     borderLeftColor={isActive ? "brand.green" : "transparent"}
                     lineHeight="1.4"
                     fontWeight={isActive ? "bold" : "normal"}
-                    textDecoration="none" // Ensure no underline by default
-                    // Removed the _hover prop entirely
-                    transition="color 0.15s ease-in-out, border-color 0.15s ease-in-out, font-weight 0.15s ease-in-out" // Refined transition
+                    textDecoration="none"
+                    transition="color 0.15s ease-in-out, border-color 0.15s ease-in-out, font-weight 0.15s ease-in-out"
                     onClick={(e) => {
                       e.preventDefault();
-                      setActiveHeadingId(heading.id); // Set active immediately
+                      setActiveHeadingId(heading.id);
                       const targetElement = document.getElementById(heading.id);
                       if (targetElement) {
                         const offset = 100;
@@ -284,7 +273,7 @@ function BlogPost() {
                       marginBottom: "1.25rem",
                       borderBottom: "1px solid #444",
                       paddingBottom: "0.5rem",
-                      scrollMarginTop: "100px", // Match JS offset
+                      scrollMarginTop: "100px",
                     },
                     "& ul, & ol": {
                       marginLeft: "1.8rem",
