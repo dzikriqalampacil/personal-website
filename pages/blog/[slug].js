@@ -262,8 +262,16 @@ function BlogPost() {
                       maxWidth: "100%",
                       height: "auto",
                       borderRadius: "10px",
-                      margin: "1.5rem 0",
+                      margin: "1.5rem 0 0.5rem 0",
                       boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
+                    },
+                    "& .image-caption": {
+                      color: "#8F8F8F",
+                      fontSize: "sm",
+                      textAlign: "center",
+                      marginTop: "0.5rem",
+                      marginBottom: "1.5rem",
+                      fontStyle: "italic",
                     },
                     "& h2": {
                       color: "white",
@@ -362,6 +370,7 @@ function BlogPost() {
                             }}
                             {...props}
                           />
+                          {alt && <Text className="image-caption">{alt}</Text>}
                         </Box>
                       ),
                     }}

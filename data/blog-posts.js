@@ -5,7 +5,7 @@ export const blogPosts = [
     content: `## Introduction
 Web development is an exciting journey that combines creativity with technical skills. In this post, we'll explore the fundamentals of web development and how to get started.
 
-![Test Image](/favicon.png)
+![A colorful icon representing web development](/favicon.png)
 
 ## The Basics
 When starting with web development, it's important to understand the core technologies:
@@ -14,7 +14,7 @@ When starting with web development, it's important to understand the core techno
 2. CSS - Styling
 3. JavaScript - Interactivity
 
-![Test Image 2](/favicon.png)
+![The three pillars of web development: HTML, CSS, and JavaScript](/favicon.png)
 
 ## Next Steps
 After mastering the basics, you can move on to more advanced topics like:
