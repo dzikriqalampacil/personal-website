@@ -1,32 +1,27 @@
 export const blogPosts = [
   {
     id: 1,
-    title: "Getting Started with Web Development",
-    content: `## Introduction
-Web development is an exciting journey that combines creativity with technical skills. In this post, we'll explore the fundamentals of web development and how to get started.
+    title: "How I Built a Self-Hosted Web Server with a Beelink Mini PC",
+    content: `
+![When you accidentally add your credit card and your bill is going to the moon.](/images/blog/soaring_cloud_bill.jpeg)
 
-![A colorful icon representing web development](/favicon.png)
+## Introduction
+Cloud hosting is convenient, but over time, the costs can add up—especially if you’re running multiple projects. After renting virtual machines from cloud providers for a while, I started wondering. **What if I could host my own websites instead?**
 
-## The Basics
-When starting with web development, it's important to understand the core technologies:
+That’s when I decided to set up a **home server using a Beelink Mini PC S12 Pro** (This is not a sponsored post, but feel free to contact me). Not only does it give me full control over my infrastructure, but it’s also a great way to learn more about server management.
 
-1. HTML - Structure
-2. CSS - Styling
-3. JavaScript - Interactivity
+## Preparing the Parts
+![A glimpse of not so tidy Mini PC setup](/images/blog/mini_pc_setup.jpg)
 
-![The three pillars of web development: HTML, CSS, and JavaScript](/favicon.png)
+You can use any Mini PC you like, but for the initial setup, you’ll need a few essential components to interact with it. Going back to the basics, you’ll need at least a **monitor and a keyboard**. A mouse is also recommended, especially since most Mini PCs come with **Windows pre-installed**. I recommend borrowing these from a friend or neighbor since, later on, we’ll use **Remote Desktop Connection** to interact with the Mini PC (assuming you already have a personal computer when reading this blog post).  
 
-## Next Steps
-After mastering the basics, you can move on to more advanced topics like:
+In this tutorial, I’ll be guiding you from the perspective of **Windows OS**, as I’ll be using **Hyper-V** as the hypervisor to create virtual machines, where we will host our website.  
 
-- React and modern frameworks
-- Backend development
-- Database management
-- Deployment strategies
-
-Remember, the key to success in web development is consistent practice and staying updated with the latest technologies.`,
+`,
     date: "2024-03-28",
     author: "Dzikri Qalam Hatorangan",
     slug: "getting-started-with-web-development",
+    summary:
+      "Learn the basics of web development and get started on your coding journey.",
   },
 ];

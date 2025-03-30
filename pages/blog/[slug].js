@@ -255,7 +255,7 @@ function BlogPost() {
                 <Box
                   w="100%"
                   color="#AEAEAE"
-                  fontSize={{ base: "md", lg: "lg" }}
+                  fontSize={{ base: "16px", lg: "17px" }}
                   lineHeight="1.8"
                   sx={{
                     "& img": {
@@ -265,36 +265,35 @@ function BlogPost() {
                       margin: "1.5rem 0 0.5rem 0",
                       boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
                     },
-                    "& .image-caption": {
-                      color: "#8F8F8F",
-                      fontSize: "sm",
-                      textAlign: "center",
-                      marginTop: "0.5rem",
-                      marginBottom: "1.5rem",
-                      fontStyle: "italic",
-                    },
                     "& h2": {
                       color: "white",
-                      fontSize: { base: "xl", md: "2xl" },
+                      fontSize: { base: "24px", md: "28px" },
                       fontWeight: "bold",
-                      marginTop: "2rem",
-                      marginBottom: "1rem",
+                      marginTop: "3rem",
+                      marginBottom: "1.5rem",
                       borderBottom: "1px solid #444",
-                      paddingBottom: "0.5rem",
+                      paddingBottom: "0.75rem",
                       scrollMarginTop: "100px",
                     },
                     "& ul, & ol": {
-                      marginLeft: "1.8rem",
-                      marginBottom: "1rem",
+                      marginLeft: "2rem",
+                      marginBottom: "1.5rem",
+                      color: "#DADADA",
                     },
                     "& li": {
-                      marginBottom: "0.5rem",
+                      marginBottom: "0.75rem",
+                      lineHeight: "1.7",
                     },
                     "& p": {
-                      marginBottom: "1rem",
+                      marginBottom: "1.5rem",
+                      color: "#DADADA",
+                      letterSpacing: "0.2px",
+                      lineHeight: "1.8",
                     },
                     "& p:first-of-type": {
-                      marginTop: 0,
+                      fontSize: { base: "17px", lg: "18px" },
+                      color: "#FFFFFF",
+                      marginTop: "1.5rem",
                     },
                     "& a": {
                       color: "brand.green",
@@ -304,21 +303,32 @@ function BlogPost() {
                         opacity: 0.8,
                       },
                     },
+                    "& strong": {
+                      color: "#FFFFFF",
+                      fontWeight: "700",
+                      letterSpacing: "0.3px",
+                      padding: "0 2px",
+                    },
+                    "& em": {
+                      color: "#B4B4B4",
+                      fontStyle: "italic",
+                    },
                     "& code:not(pre > code)": {
                       backgroundColor: "#2D3748",
                       color: "#EDF2F7",
                       padding: "0.2em 0.4em",
                       borderRadius: "3px",
-                      fontSize: "sm",
+                      fontSize: "0.9em",
                     },
                     "& pre": {
                       backgroundColor: "#1A202C",
-                      padding: "1rem",
+                      padding: "1.25rem",
                       borderRadius: "md",
                       overflowX: "auto",
-                      fontSize: "sm",
-                      lineHeight: "1.5",
-                      marginBottom: "1.25rem",
+                      fontSize: "0.9em",
+                      lineHeight: "1.6",
+                      marginBottom: "1.5rem",
+                      border: "1px solid #2D3748",
                     },
                     "& pre code": {
                       backgroundColor: "transparent",
@@ -326,6 +336,14 @@ function BlogPost() {
                       padding: 0,
                       fontSize: "inherit",
                       fontFamily: "monospace",
+                    },
+                    "& blockquote": {
+                      borderLeft: "4px solid #444",
+                      paddingLeft: "1rem",
+                      marginLeft: 0,
+                      marginBottom: "1.5rem",
+                      color: "#B4B4B4",
+                      fontStyle: "italic",
                     },
                   }}
                 >
@@ -370,7 +388,18 @@ function BlogPost() {
                             }}
                             {...props}
                           />
-                          {alt && <Text className="image-caption">{alt}</Text>}
+                          {alt && (
+                            <Text
+                              textAlign="center"
+                              mt="0.5rem"
+                              mb="1.5rem"
+                              fontStyle="italic"
+                              maxWidth="90%"
+                              mx="auto"
+                            >
+                              {alt}
+                            </Text>
+                          )}
                         </Box>
                       ),
                     }}
