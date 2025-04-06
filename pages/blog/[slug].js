@@ -201,62 +201,89 @@ function BlogPost({ post }) {
         zIndex={1}
         position="relative"
       >
-        <HStack spacing={10} align="start">
+        <HStack spacing={20} align="start">
           <Box
             position="sticky"
             top={{ base: "60px", lg: "40px" }}
             w="300px"
             display={{ base: "none", lg: "block" }}
             p={4}
+            pr={8}
             alignSelf="flex-start"
           >
             <Text color="brand.green" fontSize="lg" fontWeight="bold" mb={5}>
               Table of Contents
             </Text>
-            <VStack spacing={4} align="start">
-              {headings.map((heading) => {
-                const isActive = heading.id === activeHeadingId;
-                return (
-                  <Link
-                    key={heading.id}
-                    href={`#${heading.id}`}
-                    color={isActive ? "brand.green" : "#8F8F8F"}
-                    fontSize="md"
-                    pl={2}
-                    borderLeft="3px solid"
-                    borderLeftColor={isActive ? "brand.green" : "transparent"}
-                    lineHeight="1.4"
-                    fontWeight={isActive ? "bold" : "normal"}
-                    textDecoration="none"
-                    transition="color 0.15s ease-in-out, border-color 0.15s ease-in-out, font-weight 0.15s ease-in-out"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setActiveHeadingId(heading.id);
-                      const targetElement = document.getElementById(heading.id);
-                      if (targetElement) {
-                        const offset = 100;
-                        const bodyRect =
-                          document.body.getBoundingClientRect().top;
-                        const elementRect =
-                          targetElement.getBoundingClientRect().top;
-                        const elementPosition = elementRect - bodyRect;
-                        const offsetPosition = elementPosition - offset;
+            <Box
+              maxH="calc(100vh - 200px)"
+              overflowY="auto"
+              css={{
+                "&::-webkit-scrollbar": {
+                  width: "4px",
+                },
+                "&::-webkit-scrollbar-track": {
+                  background: "#161616",
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  background: "#444",
+                  borderRadius: "4px",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  background: "#555",
+                },
+              }}
+            >
+              <Box pb={8}>
+                <VStack spacing={4} align="start">
+                  {headings.map((heading) => {
+                    const isActive = heading.id === activeHeadingId;
+                    return (
+                      <Link
+                        key={heading.id}
+                        href={`#${heading.id}`}
+                        color={isActive ? "brand.green" : "#8F8F8F"}
+                        fontSize="md"
+                        pl={2}
+                        borderLeft="3px solid"
+                        borderLeftColor={
+                          isActive ? "brand.green" : "transparent"
+                        }
+                        lineHeight="1.4"
+                        fontWeight={isActive ? "bold" : "normal"}
+                        textDecoration="none"
+                        transition="color 0.15s ease-in-out, border-color 0.15s ease-in-out, font-weight 0.15s ease-in-out"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setActiveHeadingId(heading.id);
+                          const targetElement = document.getElementById(
+                            heading.id
+                          );
+                          if (targetElement) {
+                            const offset = 100;
+                            const bodyRect =
+                              document.body.getBoundingClientRect().top;
+                            const elementRect =
+                              targetElement.getBoundingClientRect().top;
+                            const elementPosition = elementRect - bodyRect;
+                            const offsetPosition = elementPosition - offset;
 
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth",
-                        });
-                        setTimeout(() => {
-                          history.pushState(null, null, `#${heading.id}`);
-                        }, 400);
-                      }
-                    }}
-                  >
-                    {heading.text}
-                  </Link>
-                );
-              })}
-            </VStack>
+                            window.scrollTo({
+                              top: offsetPosition,
+                              behavior: "smooth",
+                            });
+                            setTimeout(() => {
+                              history.pushState(null, null, `#${heading.id}`);
+                            }, 400);
+                          }
+                        }}
+                      >
+                        {heading.text}
+                      </Link>
+                    );
+                  })}
+                </VStack>
+              </Box>
+            </Box>
           </Box>
 
           <Box flex={1} minW={0}>
