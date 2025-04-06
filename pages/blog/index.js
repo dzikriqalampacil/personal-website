@@ -9,21 +9,44 @@ import {
   Icon,
   IconButton,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NextLink from "next/link";
 import { blogPosts } from "../../data/blog-posts";
 import { FaHome } from "react-icons/fa";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-function Blog() {
-  const [posts, setPosts] = useState([]);
+export async function getStaticProps() {
+  const posts = await Promise.all(
+    blogPosts.map(async (post) => {
+      const filePath = path.join(
+        process.cwd(),
+        "content/blog",
+        `${post.slug}.md`
+      );
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      const { data: frontmatter, content } = matter(fileContents);
 
-  useEffect(() => {
-    const sortedPosts = [...blogPosts].sort(
-      (a, b) => new Date(b.date) - new Date(a.date)
-    );
-    setPosts(sortedPosts);
-  }, []);
+      return {
+        ...post,
+        ...frontmatter,
+        content,
+      };
+    })
+  );
 
+  // Sort posts by date
+  const sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return {
+    props: {
+      posts: sortedPosts,
+    },
+  };
+}
+
+function Blog({ posts }) {
   return (
     <VStack
       bg={"#161616"}
@@ -114,7 +137,12 @@ function Blog() {
                   }}
                 >
                   <Text color="brand.green" fontSize="sm" mb={2}>
-                    {new Date(post.date).toLocaleDateString()}
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      timeZone: "UTC",
+                    })}
                   </Text>
                   <Heading
                     color="white"

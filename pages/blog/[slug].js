@@ -13,26 +13,54 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { blogPosts } from "../../data/blog-posts";
 import throttle from "lodash.throttle";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-function BlogPost() {
+export async function getStaticPaths() {
+  return {
+    paths: blogPosts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const { slug } = params;
+  const filePath = path.join(process.cwd(), "content/blog", `${slug}.md`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const { data: frontmatter, content } = matter(fileContents);
+
+  return {
+    props: {
+      post: {
+        ...frontmatter,
+        content,
+        slug,
+      },
+    },
+  };
+}
+
+function BlogPost({ post }) {
   const router = useRouter();
   const { slug } = router.query;
   const [headings, setHeadings] = useState([]);
   const [activeHeadingId, setActiveHeadingId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [post, setPost] = useState(null);
   const headingElementsRef = useRef({});
 
   useEffect(() => {
     if (router.isReady) {
       setIsLoading(false);
-      const currentPost = blogPosts.find((p) => p.slug === slug);
-      setPost(currentPost);
 
-      if (currentPost) {
+      if (post) {
         const getHeadings = () => {
           const headingsArr = [];
-          const lines = currentPost.content.split("\n");
+          const lines = post.content.split("\n");
           const tempHeadingMap = {};
 
           lines.forEach((line) => {
@@ -63,7 +91,7 @@ function BlogPost() {
         setHeadings([]);
       }
     }
-  }, [router.isReady, slug]);
+  }, [router.isReady, post]);
 
   useEffect(() => {
     if (!headings.length) return;
@@ -245,7 +273,12 @@ function BlogPost() {
 
                 <HStack spacing={2}>
                   <Text color="brand.green" fontSize="sm">
-                    {new Date(post.date).toLocaleDateString()}
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      timeZone: "UTC",
+                    })}
                   </Text>
                   <Text color="#8F8F8F" fontSize="sm">
                     By {post.author}
@@ -374,27 +407,35 @@ function BlogPost() {
                       },
                       img: ({ node, src, alt, ...props }) => (
                         <Box width="100%" marginY="2.5rem">
-                          <Image
-                            src={src}
-                            alt={alt}
-                            width={1000}
-                            height={562}
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-                            style={{
-                              width: "100%",
-                              height: "auto",
-                              borderRadius: "10px",
-                              boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
-                            }}
-                            {...props}
-                          />
+                          <Box
+                            position="relative"
+                            display="flex"
+                            justifyContent="center"
+                          >
+                            <Image
+                              src={src}
+                              alt={alt}
+                              width={800}
+                              height={500}
+                              priority
+                              style={{
+                                maxWidth: "100%",
+                                height: "auto",
+                                borderRadius: "10px",
+                                boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
+                              }}
+                              {...props}
+                            />
+                          </Box>
                           {alt && (
                             <Text
+                              fontSize="13px"
+                              color="#8F8F8F"
                               textAlign="center"
-                              mt="0.5rem"
-                              mb="1.5rem"
+                              mt="0.75rem"
+                              mb="1rem"
                               fontStyle="italic"
-                              maxWidth="90%"
+                              maxWidth="800px"
                               mx="auto"
                             >
                               {alt}
