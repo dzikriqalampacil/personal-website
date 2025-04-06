@@ -171,9 +171,9 @@ function BlogPost({ post }) {
       <Text
         fontWeight={700}
         color={"#272727"}
-        fontSize={{ base: "32px", md: "80px", lg: "120px" }}
+        fontSize={{ base: "32px", md: "50px", lg: "80px" }}
         position={"absolute"}
-        right={{ base: "-10", md: "-70", lg: "-130" }}
+        right={{ base: "-10", md: "-60", lg: "-100" }}
         top="0"
         userSelect={"none"}
         zIndex={0}
@@ -184,9 +184,9 @@ function BlogPost({ post }) {
       <Text
         fontWeight={700}
         color={"#272727"}
-        fontSize={{ base: "32px", md: "80px", lg: "120px" }}
+        fontSize={{ base: "32px", md: "50px", lg: "80px" }}
         position={"absolute"}
-        left={{ base: "-10", md: "-70", lg: "-130" }}
+        left={{ base: "-10", md: "-60", lg: "-100" }}
         bottom="0"
         userSelect={"none"}
         zIndex={0}
@@ -233,7 +233,7 @@ function BlogPost({ post }) {
                 },
               }}
             >
-              <Box pb={8}>
+              <Box pr={8}>
                 <VStack spacing={4} align="start">
                   {headings.map((heading) => {
                     const isActive = heading.id === activeHeadingId;
@@ -492,7 +492,7 @@ function BlogPost({ post }) {
                   fontSize="md"
                   fontWeight="medium"
                 >
-                  ← Back to Blog
+                  ← Read more Blog
                 </Link>
               </Box>
             </VStack>
