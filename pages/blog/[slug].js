@@ -292,14 +292,19 @@ function BlogPost({ post }) {
                 <Heading
                   fontWeight={700}
                   color={"white"}
-                  fontSize={{ base: "28px", md: "3xl", lg: "4xl" }}
-                  mb={4}
+                  fontSize={{ base: "22px", md: "26px", lg: "28px" }}
+                  lineHeight={{ base: "1.4", md: "1.3" }}
+                  mb={5}
+                  mt={8}
                 >
                   {post.title}
                 </Heading>
 
                 <HStack spacing={2}>
-                  <Text color="brand.green" fontSize="sm">
+                  <Text
+                    color="brand.green"
+                    fontSize={{ base: "13px", md: "14px", lg: "15px" }}
+                  >
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
@@ -307,7 +312,10 @@ function BlogPost({ post }) {
                       timeZone: "UTC",
                     })}
                   </Text>
-                  <Text color="#8F8F8F" fontSize="sm">
+                  <Text
+                    color="#8F8F8F"
+                    fontSize={{ base: "13px", md: "14px", lg: "15px" }}
+                  >
                     By {post.author}
                   </Text>
                 </HStack>
@@ -315,8 +323,8 @@ function BlogPost({ post }) {
                 <Box
                   w="100%"
                   color="#AEAEAE"
-                  fontSize={{ base: "16px", lg: "17px" }}
-                  lineHeight="1.8"
+                  fontSize={{ base: "15px", md: "16px", lg: "18px" }}
+                  lineHeight="2"
                   sx={{
                     "& img": {
                       maxWidth: "100%",
@@ -325,15 +333,60 @@ function BlogPost({ post }) {
                       margin: "1.5rem 0 0.5rem 0",
                       boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
                     },
+                    "& h1": {
+                      color: "white",
+                      fontSize: { base: "20px", md: "22px", lg: "24px" },
+                      fontWeight: "800",
+                      marginTop: "3.5rem",
+                      marginBottom: "1.25rem",
+                      letterSpacing: "-0.02em",
+                      lineHeight: "1.3",
+                      borderBottom: "1px solid #333",
+                      paddingBottom: "0.75rem",
+                    },
                     "& h2": {
                       color: "white",
-                      fontSize: { base: "24px", md: "28px" },
-                      fontWeight: "bold",
-                      marginTop: "3rem",
-                      marginBottom: "1.5rem",
-                      borderBottom: "1px solid #444",
+                      fontSize: { base: "20px", md: "22px", lg: "24px" },
+                      fontWeight: "700",
+                      marginTop: "3.5rem",
+                      marginBottom: "1rem",
+                      letterSpacing: "-0.02em",
+                      lineHeight: "1.3",
+                      borderBottom: "1px solid #333",
                       paddingBottom: "0.75rem",
-                      scrollMarginTop: "100px",
+                    },
+                    "& h3": {
+                      color: "white",
+                      fontSize: { base: "18px", md: "20px", lg: "22px" },
+                      fontWeight: "600",
+                      marginTop: "3rem",
+                      marginBottom: "0.875rem",
+                      letterSpacing: "-0.01em",
+                      lineHeight: "1.4",
+                    },
+                    "& h4": {
+                      color: "white",
+                      fontSize: { base: "16px", md: "18px", lg: "20px" },
+                      fontWeight: "600",
+                      marginTop: "2.5rem",
+                      marginBottom: "0.75rem",
+                      lineHeight: "1.4",
+                    },
+                    "& h5": {
+                      color: "white",
+                      fontSize: { base: "15px", md: "16px", lg: "18px" },
+                      fontWeight: "600",
+                      marginTop: "2.5rem",
+                      marginBottom: "0.75rem",
+                      lineHeight: "1.4",
+                    },
+                    "& h6": {
+                      color: "white",
+                      fontSize: { base: "15px", md: "16px", lg: "18px" },
+                      fontWeight: "500",
+                      marginTop: "2.5rem",
+                      marginBottom: "0.75rem",
+                      lineHeight: "1.4",
                     },
                     "& ul, & ol": {
                       marginLeft: "2rem",
@@ -348,12 +401,14 @@ function BlogPost({ post }) {
                       marginBottom: "1.5rem",
                       color: "#DADADA",
                       letterSpacing: "0.2px",
-                      lineHeight: "1.8",
+                      lineHeight: "2",
+                      fontSize: { base: "15px", md: "16px", lg: "18px" },
                     },
                     "& p:first-of-type": {
-                      fontSize: { base: "17px", lg: "18px" },
+                      fontSize: { base: "15px", md: "16px", lg: "18px" },
                       color: "#FFFFFF",
                       marginTop: "1.5rem",
+                      lineHeight: "2",
                     },
                     "& a": {
                       color: "brand.green",
@@ -378,14 +433,14 @@ function BlogPost({ post }) {
                       color: "#EDF2F7",
                       padding: "0.2em 0.4em",
                       borderRadius: "3px",
-                      fontSize: "0.9em",
+                      fontSize: { base: "13px", md: "14px", lg: "16px" },
                     },
                     "& pre": {
                       backgroundColor: "#1A202C",
                       padding: "1.25rem",
                       borderRadius: "md",
                       overflowX: "auto",
-                      fontSize: "0.9em",
+                      fontSize: { base: "13px", md: "14px", lg: "16px" },
                       lineHeight: "1.6",
                       marginBottom: "1.5rem",
                       border: "1px solid #2D3748",
@@ -404,6 +459,9 @@ function BlogPost({ post }) {
                       marginBottom: "1.5rem",
                       color: "#B4B4B4",
                       fontStyle: "italic",
+                    },
+                    "& h1, & h2": {
+                      scrollMarginTop: "100px",
                     },
                   }}
                 >
