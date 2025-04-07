@@ -205,7 +205,7 @@ function BlogPost({ post }) {
 
       <Container
         maxW="container.xl"
-        pt={{ base: "60px", md: "80px" }}
+        pt={{ base: "20px", md: "80px" }}
         pb="50px"
         zIndex={1}
         position="relative"
@@ -221,7 +221,7 @@ function BlogPost({ post }) {
         >
           <Box
             position="sticky"
-            top={{ base: "60px", lg: "40px" }}
+            top={{ base: "40px", lg: "40px" }}
             w="300px"
             display={{ base: "none", lg: "block" }}
             p={4}
@@ -311,8 +311,8 @@ function BlogPost({ post }) {
                   color={"white"}
                   fontSize={{ base: "22px", md: "26px", lg: "28px" }}
                   lineHeight={{ base: "1.4", md: "1.3" }}
-                  mb={5}
-                  mt={8}
+                  mb={4}
+                  mt={4}
                 >
                   {post.title}
                 </Heading>
@@ -342,7 +342,7 @@ function BlogPost({ post }) {
                   color="#AEAEAE"
                   fontSize={{ base: "15px", md: "16px", lg: "18px" }}
                   lineHeight="2"
-                  mt={6}
+                  mt={4}
                   sx={{
                     "& img": {
                       maxWidth: "100%",
