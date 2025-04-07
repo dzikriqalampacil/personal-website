@@ -172,36 +172,39 @@ function BlogPost({ post }) {
       minH="100vh"
       position={"relative"}
       id="blog-post"
-      overflowX="hidden"
       width="100%"
     >
-      <Text
-        fontWeight={700}
-        color={"#272727"}
-        fontSize={{ base: "32px", md: "50px", lg: "80px" }}
-        position={"absolute"}
-        right={{ base: "-10", md: "-60", lg: "-100" }}
-        top="0"
-        userSelect={"none"}
+      <Box
+        position="absolute"
+        width="100%"
+        height="100%"
+        overflow="hidden"
         zIndex={0}
-        display={{ base: "none", md: "block" }}
       >
-        BLOG
-      </Text>
+        <Text
+          fontWeight={700}
+          color={"#272727"}
+          fontSize={{ base: "32px", md: "50px", lg: "80px" }}
+          position={"absolute"}
+          right={{ base: "-10", md: "-60", lg: "-100" }}
+          top="0"
+          userSelect={"none"}
+        >
+          BLOG
+        </Text>
 
-      <Text
-        fontWeight={700}
-        color={"#272727"}
-        fontSize={{ base: "32px", md: "50px", lg: "80px" }}
-        position={"absolute"}
-        left={{ base: "-10", md: "-60", lg: "-100" }}
-        bottom="0"
-        userSelect={"none"}
-        zIndex={0}
-        display={{ base: "none", md: "block" }}
-      >
-        BLOG
-      </Text>
+        <Text
+          fontWeight={700}
+          color={"#272727"}
+          fontSize={{ base: "32px", md: "50px", lg: "80px" }}
+          position={"absolute"}
+          left={{ base: "-10", md: "-60", lg: "-100" }}
+          bottom="0"
+          userSelect={"none"}
+        >
+          BLOG
+        </Text>
+      </Box>
 
       <Container
         maxW="container.xl"
