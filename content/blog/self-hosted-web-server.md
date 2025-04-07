@@ -2,7 +2,7 @@
 title: "How I Built a Self-Hosted Web Server with a Beelink Mini PC Using Hyper-V"
 date: "2024-03-28"
 author: "Dzikri Qalam Hatorangan"
-summary: "How I set up a personal web server on a Beelink Mini PC with Hyper-V to deploy and expose my frontend website to the internet."
+summary: "Setting up a self-hosted web server on a Beelink Mini PC with Hyper-V to deploy my frontend website."
 ---
 
 ![When you accidentally add your credit card and your bill is going to the moon](/images/blog/soaring_cloud_bill.jpeg)
