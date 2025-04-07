@@ -167,7 +167,14 @@ function BlogPost({ post }) {
   }
 
   return (
-    <VStack bg={"#161616"} minH="100vh" position={"relative"} id="blog-post">
+    <VStack
+      bg={"#161616"}
+      minH="100vh"
+      position={"relative"}
+      id="blog-post"
+      overflowX="hidden"
+      width="100%"
+    >
       <Text
         fontWeight={700}
         color={"#272727"}
@@ -177,6 +184,7 @@ function BlogPost({ post }) {
         top="0"
         userSelect={"none"}
         zIndex={0}
+        display={{ base: "none", md: "block" }}
       >
         BLOG
       </Text>
@@ -190,6 +198,7 @@ function BlogPost({ post }) {
         bottom="0"
         userSelect={"none"}
         zIndex={0}
+        display={{ base: "none", md: "block" }}
       >
         BLOG
       </Text>
@@ -200,8 +209,16 @@ function BlogPost({ post }) {
         pb="50px"
         zIndex={1}
         position="relative"
+        px={{ base: 0, md: 6 }}
+        mx="auto"
+        width="100%"
       >
-        <HStack spacing={20} align="start">
+        <HStack
+          spacing={{ base: 0, lg: 20 }}
+          align="start"
+          width="100%"
+          justify="center"
+        >
           <Box
             position="sticky"
             top={{ base: "60px", lg: "40px" }}
@@ -286,8 +303,8 @@ function BlogPost({ post }) {
             </Box>
           </Box>
 
-          <Box flex={1} minW={0}>
-            <VStack spacing={8} align="stretch">
+          <Box flex={1} minW={0} maxW="800px" px={{ base: 4, md: 0 }}>
+            <VStack spacing={8} align="stretch" px={{ base: 4, md: 0 }} py={2}>
               <Box>
                 <Heading
                   fontWeight={700}
@@ -325,6 +342,7 @@ function BlogPost({ post }) {
                   color="#AEAEAE"
                   fontSize={{ base: "15px", md: "16px", lg: "18px" }}
                   lineHeight="2"
+                  mt={6}
                   sx={{
                     "& img": {
                       maxWidth: "100%",
