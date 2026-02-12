@@ -107,7 +107,7 @@ export default function BellPage() {
             </VStack>
           </motion.div>
           <Text color="#555" fontWeight="500" fontSize="13px">
-            30s cooldown between rings
+            5s cooldown between rings
           </Text>
         </VStack>
       </Box>

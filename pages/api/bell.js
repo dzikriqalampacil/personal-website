@@ -3,7 +3,7 @@ import http from "http";
 const COOLDOWN_MS = 5 * 1000;
 let lastRingTime = 0;
 
-const BELL_HOST = process.env.BELL_HOST || "192.168.18.1";
+const BELL_HOST = process.env.BELL_HOST || "192.168.18.11";
 const BELL_PORT = process.env.BELL_PORT || "9999";
 
 function triggerWindowsBell() {
