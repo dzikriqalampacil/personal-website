@@ -1,6 +1,6 @@
 import http from "http";
 
-const COOLDOWN_MS = 30 * 1000;
+const COOLDOWN_MS = 5 * 1000;
 let lastRingTime = 0;
 
 const BELL_HOST = process.env.BELL_HOST || "192.168.18.1";
