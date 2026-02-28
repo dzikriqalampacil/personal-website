@@ -1,0 +1,16 @@
+services:
+  personal_website:
+    build: .
+    container_name: personal_website
+    restart: unless-stopped
+    networks:
+      - caddy_net
+    devices:
+      - "/dev/snd:/dev/snd"    
+    group_add:
+      - audio                  
+
+networks:
+  caddy_net:
+    external: true
+
