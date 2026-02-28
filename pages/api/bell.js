@@ -1,32 +1,43 @@
-import http from "http";
+import { spawn } from "child_process";
+import path from "path";
 
 const COOLDOWN_MS = 5 * 1000;
 let lastRingTime = 0;
 
-const BELL_HOST = process.env.BELL_HOST || "192.168.18.11";
-const BELL_PORT = process.env.BELL_PORT || "9999";
+const BELL_SCRIPT_PATH =
+  process.env.BELL_SCRIPT_PATH ||
+  path.join(process.cwd(), "scripts", "ring-bell.sh");
+const BELL_EXEC_TIMEOUT_MS = Number(process.env.BELL_EXEC_TIMEOUT_MS || 15000);
 
-function triggerWindowsBell() {
+function triggerLocalBell() {
   return new Promise((resolve, reject) => {
-    const req = http.request(
-      {
-        hostname: BELL_HOST,
-        port: BELL_PORT,
-        path: "/ring",
-        method: "POST",
-        timeout: 5000,
-      },
-      (res) => {
-        res.resume();
-        resolve();
-      },
-    );
-    req.on("error", reject);
-    req.on("timeout", () => {
-      req.destroy();
-      reject(new Error("Request to bell listener timed out"));
+    const child = spawn("bash", [BELL_SCRIPT_PATH], {
+      env: process.env,
+      stdio: "ignore",
     });
-    req.end();
+
+    const timeoutId = setTimeout(() => {
+      child.kill("SIGTERM");
+      reject(new Error("Bell command timed out"));
+    }, BELL_EXEC_TIMEOUT_MS);
+
+    child.on("error", (error) => {
+      clearTimeout(timeoutId);
+      reject(error);
+    });
+
+    child.on("exit", (code, signal) => {
+      clearTimeout(timeoutId);
+      if (code === 0) {
+        resolve();
+        return;
+      }
+      reject(
+        new Error(
+          `Bell command failed (code: ${String(code)}, signal: ${String(signal)})`,
+        ),
+      );
+    });
   });
 }
 
@@ -48,13 +59,13 @@ export default async function handler(req, res) {
   lastRingTime = now;
 
   try {
-    await triggerWindowsBell();
+    await triggerLocalBell();
     return res.status(200).json({ success: true, message: "Bell rang!" });
   } catch (err) {
     console.error("Failed to ring bell:", err.message);
     lastRingTime = 0;
     return res
       .status(500)
-      .json({ error: "Failed to ring bell on host machine" });
+      .json({ error: "Failed to ring bell on Ubuntu server" });
   }
 }
