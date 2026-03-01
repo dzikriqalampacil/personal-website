@@ -35,7 +35,7 @@ Install at least one audio tool on your VM (for example `pulseaudio-utils` or `a
 ### Optional environment variables
 
 - `BELL_SCRIPT_PATH` (default: `scripts/ring-bell.sh`)
-- `BELL_EXEC_TIMEOUT_MS` (default: `15000`)
+- `BELL_EXEC_TIMEOUT_MS` (default: `90000`)
 - `BELL_PLAY_COMMAND` (custom playback command used by the script, e.g. `paplay /path/to/your/bell.oga`)
 
 Example:
@@ -66,6 +66,20 @@ docker run -d \
 ```
 
 If your host audio stack uses PulseAudio/PipeWire socket forwarding instead of direct ALSA device access, mount the socket and set the proper environment variables for your host setup.
+
+### Production redeploy helper
+
+Use this script on your VM to pull latest code and redeploy containers:
+
+```bash
+./scripts/redeploy-production.sh
+```
+
+Optional: pass a branch name (default uses your current branch):
+
+```bash
+./scripts/redeploy-production.sh main
+```
 
 ## Learn More
 
