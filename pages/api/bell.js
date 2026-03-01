@@ -7,7 +7,7 @@ let lastRingTime = 0;
 const BELL_SCRIPT_PATH =
   process.env.BELL_SCRIPT_PATH ||
   path.join(process.cwd(), "scripts", "ring-bell.sh");
-const BELL_EXEC_TIMEOUT_MS = Number(process.env.BELL_EXEC_TIMEOUT_MS || 15000);
+const BELL_EXEC_TIMEOUT_MS = Number(process.env.BELL_EXEC_TIMEOUT_MS || 90000);
 
 function triggerLocalBell() {
   return new Promise((resolve, reject) => {
@@ -16,18 +16,22 @@ function triggerLocalBell() {
       stdio: "ignore",
     });
 
-    const timeoutId = setTimeout(() => {
-      child.kill("SIGTERM");
-      reject(new Error("Bell command timed out"));
-    }, BELL_EXEC_TIMEOUT_MS);
+    const hasTimeout =
+      Number.isFinite(BELL_EXEC_TIMEOUT_MS) && BELL_EXEC_TIMEOUT_MS > 0;
+    const timeoutId = hasTimeout
+      ? setTimeout(() => {
+          child.kill("SIGTERM");
+          reject(new Error("Bell command timed out"));
+        }, BELL_EXEC_TIMEOUT_MS)
+      : null;
 
     child.on("error", (error) => {
-      clearTimeout(timeoutId);
+      if (timeoutId) clearTimeout(timeoutId);
       reject(error);
     });
 
     child.on("exit", (code, signal) => {
-      clearTimeout(timeoutId);
+      if (timeoutId) clearTimeout(timeoutId);
       if (code === 0) {
         resolve();
         return;

@@ -4,8 +4,8 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-DOORBELL_FILE="${DOORBELL_FILE:-${ROOT_DIR}/doorbell_sound.mp3}"
-HUMAN_DOORBELL_FILE="${HUMAN_DOORBELL_FILE:-${ROOT_DIR}/human_doorbell_sound.mp3}"
+DOORBELL_FILE="${DOORBELL_FILE:-${ROOT_DIR}/scripts/sounds/doorbell_sound.mp3}"
+HUMAN_DOORBELL_FILE="${HUMAN_DOORBELL_FILE:-${ROOT_DIR}/scripts/sounds/human_doorbell_sound.mp3}"
 
 DOORBELL_REPEAT="${DOORBELL_REPEAT:-3}"
 HUMAN_DOORBELL_REPEAT="${HUMAN_DOORBELL_REPEAT:-1}"

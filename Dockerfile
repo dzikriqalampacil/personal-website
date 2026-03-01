@@ -30,8 +30,6 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/next.config.js ./next.config.js
-COPY --from=builder /app/doorbell_sound.mp3 ./doorbell_sound.mp3
-COPY --from=builder /app/human_doorbell_sound.mp3 ./human_doorbell_sound.mp3
 
 RUN chmod +x /app/scripts/ring-bell.sh
 

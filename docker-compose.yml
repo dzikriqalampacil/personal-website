@@ -7,8 +7,9 @@ services:
       - caddy_net
     environment:
       - PULSE_SERVER=tcp:192.168.18.71
-      - DOORBELL_FILE=/app/doorbell_sound.mp3
-      - HUMAN_DOORBELL_FILE=/app/human_doorbell_sound.mp3
+      - BELL_EXEC_TIMEOUT_MS=120000
+      - DOORBELL_FILE=/app/scripts/sounds/doorbell_sound.mp3
+      - HUMAN_DOORBELL_FILE=/app/scripts/sounds/human_doorbell_sound.mp3
       - DOORBELL_REPEAT=3
       - HUMAN_DOORBELL_REPEAT=1
       - PLAYBACK_ROUNDS=2
