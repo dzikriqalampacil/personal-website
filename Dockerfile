@@ -16,7 +16,7 @@ FROM node:18-bookworm-slim AS runner
 WORKDIR /app
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends alsa-utils pulseaudio-utils \
+  && apt-get install -y --no-install-recommends alsa-utils pulseaudio-utils mpg123 \
   && rm -rf /var/lib/apt/lists/*
 
 ENV NODE_ENV=production
@@ -30,6 +30,8 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/next.config.js ./next.config.js
+COPY --from=builder /app/doorbell_sound.mp3 ./doorbell_sound.mp3
+COPY --from=builder /app/human_doorbell_sound.mp3 ./human_doorbell_sound.mp3
 
 RUN chmod +x /app/scripts/ring-bell.sh
 
