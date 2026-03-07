@@ -6,6 +6,7 @@ services:
     networks:
       - caddy_net
     environment:
+      - RESEND_API_KEY=${RESEND_API_KEY}
       - PULSE_SERVER=tcp:192.168.18.71
       - BELL_EXEC_TIMEOUT_MS=120000
       - DOORBELL_FILE=/app/scripts/sounds/doorbell_sound.mp3

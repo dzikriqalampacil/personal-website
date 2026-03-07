@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import {
   Flex,
   HStack,
@@ -16,7 +16,6 @@ import { Icon } from "@iconify/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import TextField from "./TextField";
-import emailjs from "@emailjs/browser";
 
 function ItemContact({ image, text, link }) {
   return (
@@ -39,34 +38,20 @@ function ItemContact({ image, text, link }) {
 
 function Contact() {
   const toast = useToast();
-  const form = useRef();
-
-  useEffect(() => {
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
-  }, []);
 
   const sendEmail = async (values, actions) => {
     try {
-      if (!process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
-        throw new Error("Public key is not configured properly");
-      }
-      if (!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID) {
-        throw new Error("Service ID is not configured properly");
-      }
-      if (!process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID) {
-        throw new Error("Template ID is not configured properly");
-      }
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
 
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: values.name,
-          from_email: values.email,
-          subject: values.subject,
-          message: values.message,
-        }
-      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
 
       toast({
         title: "Message sent successfully!",
@@ -84,6 +69,8 @@ function Contact() {
         duration: 5000,
         isClosable: true,
       });
+    } finally {
+      actions.setSubmitting(false);
     }
   };
 
@@ -172,7 +159,6 @@ function Contact() {
               {(formik) => (
                 <VStack
                   as="form"
-                  ref={form}
                   align="flex-start"
                   w="full"
                   spacing="30px"
@@ -206,6 +192,7 @@ function Contact() {
                     padding={"6px 28px"}
                     cursor={"pointer"}
                     alignSelf="flex-end"
+                    isLoading={formik.isSubmitting}
                     _hover={{
                       boxShadow: "0px 0px 11px #13FF00",
                     }}
